@@ -71,7 +71,7 @@ for(i in 1:N0){
   b=fit[1]
   a=fit[2]
   sb=fit[3]
-  sa=fit[1]
+  sa=fit[4]
   I=a*t+b
   sI=sqrt((sa*t)^2+sb^2)
   B=BIfactor*I
@@ -80,7 +80,10 @@ for(i in 1:N0){
   somegaL=omegaBfactor*sB
   #plotlinear(fit,c(0,50))
   #grid()
-  png(paste(plotprefix,"0-",i,".png",sep=""))
+  ar=roundfunc(c(a,abs(sa)))
+  br=roundfunc(c(b,sb))
+  #text(15,1,paste("U(t)=(",ar[1],"+-",ar[2],")V/s * t + (",br[1],"+-",br[2],") V",sep=""))
+  png(paste(plotprefix,"0-",i,".png",sep=""),width=768,height=512)
   plot(omegaL,Int,xlab="omega_L / Hz", ylab="Intensität / V",cex=0.6,pch=4,bty="l")
   grid()
   fit=lorentzfit(data.frame(x=omegaL,y=Int))
@@ -92,7 +95,7 @@ for(i in 1:N0){
   intense0[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
   table0=paste(table0,makeline(fit,T0[i]),sep="\n")
 }
-table0=paste(table0,endtable("Aufwärmvorgang, Polarisation: 0°"),sep="\n")
+table0=paste(table0,endtable("Aufwärmvorgang, Polarisation: 0°",label="warm0"),sep="\n")
 cat(table0,file="../tables/warm0.tex")
 
 table90=starttable()
@@ -106,7 +109,7 @@ for(i in 1:N90){
   b=fit[1]
   a=fit[2]
   sb=fit[3]
-  sa=fit[1]
+  sa=fit[4]
   I=a*t+b
   sI=sqrt((sa*t)^2+sb^2)
   B=BIfactor*I
@@ -115,7 +118,7 @@ for(i in 1:N90){
   somegaL=omegaBfactor*sB
   #plotlinear(fit,c(0,50))
   #grid()
-  png(paste(plotprefix,"90-",i,".png",sep=""))
+  png(paste(plotprefix,"90-",i,".png",sep=""),width=768,height=512)
   plot(omegaL,Int,xlab="omega_L / Hz", ylab="Intensität / V",cex=0.6,pch=4,bty="l")
   grid()
   fit=lorentzfit(data.frame(x=omegaL,y=Int),neg=TRUE)
@@ -127,7 +130,7 @@ for(i in 1:N90){
   intense90[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
   table90=paste(table90,makeline(fit,T0[i]),sep="\n")
 }
-table90=paste(table90,endtable("Aufwärmvorgang, Polarisation: 90°"),sep="\n")
+table90=paste(table90,endtable("Aufwärmvorgang, Polarisation: 90°",label="warm90"),sep="\n")
 cat(table90,file="../tables/warm90.tex")
 
 table45=starttable()
@@ -140,7 +143,7 @@ for(i in 1:N45){
   b=fit[1]
   a=fit[2]
   sb=fit[3]
-  sa=fit[1]
+  sa=fit[4]
   I=a*t+b
   sI=sqrt((sa*t)^2+sb^2)
   B=BIfactor*I
@@ -149,7 +152,7 @@ for(i in 1:N45){
   somegaL=omegaBfactor*sB
   #plotlinear(fit,c(0,50))
   #grid()
-  png(paste(plotprefix,"45-",i,".png",sep=""))
+  png(paste(plotprefix,"45-",i,".png",sep=""),width=768,height=512)
   plot(omegaL,Int,xlab="omega_L / Hz", ylab="Intensität / V",cex=0.6,pch=4,bty="l")
   grid()
   fit=dispersionsfit(data.frame(x=omegaL,y=Int))
@@ -162,7 +165,7 @@ for(i in 1:N45){
   intense45[i]=1/2*abs(optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=TRUE)$objective-optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=FALSE)$objective)
   table45=paste(table45,makeline(fit,T0[i]),sep="\n")
 }
-table45=paste(table45,endtable("Aufwärmvorgang, Polarisation: 45°"),sep="\n")
+table45=paste(table45,endtable("Aufwärmvorgang, Polarisation: 45°",label="warm45"),sep="\n")
 cat(table45,file="../tables/warm45.tex")
 
 fit0=linearfit(data.frame(x=P0,y=tau0,sy=stau0),weighted=TRUE)

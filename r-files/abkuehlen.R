@@ -71,7 +71,7 @@ for(i in 1:N0){
   b=fit[1]
   a=fit[2]
   sb=fit[3]
-  sa=fit[1]
+  sa=fit[4]
   I=a*t+b
   sI=sqrt((sa*t)^2+sb^2)
   B=BIfactor*I
@@ -92,7 +92,7 @@ for(i in 1:N0){
   intense0[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
   table0=paste(table0,makeline(fit,T0[i]),sep="\n")
 }
-table0=paste(table0,endtable("Abkühlvorgang, Polarisation: 0°"),sep="\n")
+table0=paste(table0,endtable("Abkühlvorgang, Polarisation: 0°",label="cold0"),sep="\n")
 cat(table0,file="../tables/cold0.tex")
 
 table90=starttable()
@@ -106,7 +106,7 @@ for(i in 1:N90){
   b=fit[1]
   a=fit[2]
   sb=fit[3]
-  sa=fit[1]
+  sa=fit[4]
   I=a*t+b
   sI=sqrt((sa*t)^2+sb^2)
   B=BIfactor*I
@@ -128,7 +128,7 @@ for(i in 1:N90){
   intense90[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
   table90=paste(table90,makeline(fit,T0[i]),sep="\n")
 }
-table90=paste(table90,endtable("Abkühlvorgang, Polarisation: 90°"),sep="\n")
+table90=paste(table90,endtable("Abkühlvorgang, Polarisation: 90°",label="cold90"),sep="\n")
 cat(table90,file="../tables/cold90.tex")
 
 table45=starttable()
@@ -141,7 +141,7 @@ for(i in 1:N45){
   b=fit[1]
   a=fit[2]
   sb=fit[3]
-  sa=fit[1]
+  sa=fit[4]
   I=a*t+b
   sI=sqrt((sa*t)^2+sb^2)
   B=BIfactor*I
@@ -163,7 +163,7 @@ for(i in 1:N45){
   intense45[i]=1/2*abs(optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=TRUE)$objective-optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=FALSE)$objective)
   table45=paste(table45,makeline(fit,T0[i]),sep="\n")
 }
-table45=paste(table45,endtable("Abkühlvorgang, Polarisation: 45°"),sep="\n")
+table45=paste(table45,endtable("Abkühlvorgang, Polarisation: 45°",label="cold45"),sep="\n")
 cat(table45,file="../tables/cold45.tex")
 
 

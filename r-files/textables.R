@@ -1,5 +1,5 @@
 starttable <- function(){
-  return("\\begin{table}[h!]\n\\centering\n\\begin{tabular}{|c|c|c|c|c|}\n\\hline\n$T/K$&$D/V$&$C/V$&$\\omega/Hz$&$\\tau/s$\\\\\\hline\\hline")
+  return("\\begin{table}[h!]\n\\scriptsize\\centering\n\\begin{tabular}{|c|l|l|l|l|}\n\\hline\n$T/K$&$D/V$&$C/V$&$\\omega/MHz$&$\\tau/ns$\\\\\\hline\\hline")
 }
 
 makeline<-function(fitdata,T){
@@ -14,16 +14,19 @@ makeline<-function(fitdata,T){
   
   D=pm(roundfunc(c(D0,sD)))
   C=pm(roundfunc(c(C0,sC)))
-  omega=pm(roundfunc(c(omega0,somega)))
-  tau=pm(roundfunc(c(tau0,stau)))
+  omega=pm(roundfunc(c(omega0,somega))*10^(-6))
+  tau=pm(roundfunc(c(tau0,stau))*10^9)
   
   return(paste("$",T,"$&$",D,"$&$",C,"$&$",omega,"$&$",tau,"$\\\\\\hline",sep=""))
 }
 
-endtable <- function(caption=""){
-  return(paste("\\end{tabular}\n\\caption{",caption,"}\n\\end{table}\n",sep=""))
+endtable <- function(caption="",label=""){
+  txtlabel=paste("\\label{",label,"}",sep="")
+  if(label=="")
+    txtlabel=""
+  return(paste("\\end{tabular}\n\\caption{",caption,txtlabel,"}\n\\end{table}\n",sep=""))
 }
 
 pm <- function(vals){
-  return(paste("(",vals[1],"\\pm",vals[2],")",sep=""))
+  return(paste("",vals[1],"\\pm",vals[2],"",sep=""))
 }
