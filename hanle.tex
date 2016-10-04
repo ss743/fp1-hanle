@@ -68,7 +68,7 @@
 	\end{minipage}
 	\vskip 30 pt
 }
-\newcommand{\graTwo}[4][0.5]{
+\newcommand{\graTwo}[4][0.49]{
 	\begin{minipage}[h!]{\textwidth}
 		\centering
 		\includegraphics[width=#1\textwidth]{figures/#2.png}
@@ -122,14 +122,119 @@ Wir haben die Intensitätsverläufe in Abhängigkeit der Zeit aufgenommen. Um di
 Aus einer linearen Regression (siehe Abbildung \ref{zeitfit}) bestimmen wir die Umrechnung: $$U=a\cdot t+b$$ Also erhalten wir das Magnetfeld über: $$B_z=3.363\cdot10^{-4}\cdot(a\cdot t+b)$$
 
 \gra{magnetfeld-zeit-kalibration}{Beispielhafter Datensatz zur linearen Regression. Es wurde zur Regression nur der linear ansteigende Bereich verwendet.\label{zeitfit}}
-\subsection{Lorentz-Fits}
-Da die 
-\gra[1]{warm0-5}{Beispielhafter Lorentz-Fit}
+Im weiteren Verlauf der Auswertung werden die Datensätze nicht über die Zeit, sondern über die Larmor-Frequenz $\omega_L$ aufgetragen. Diese berechnet sich folgendermaßen aus $B_z$:
+\begin{align*}
+	\omega_L&=\frac{g_J\mu_b}{\hbar}B_x&\text{mit Landé-Faktor }g_J&=1.4838\\
+	&&\text{und Bohr-Magneton }\mu_B&=\frac{e\hbar}{2m}
+\end{align*}
+\newpage
+\subsection{Lorentzfits}
+Nach !!!REF!!! verhalten sich die Daten für die Polarisationen $Pol=0°$ und $Pol=90°$ entsprechend einer Lorentz-Funktion. Wir fitten an die Daten nun also folgende Funktion:
+\begin{align}
+	I(\omega_L)&=D+\frac C2\left(2-\frac{(2(\omega_L-\omega)\tau)^2}{1+(2(\omega_L-\omega)\tau)^2}\right)
+\end{align}
+Abbildung \ref{lorentzbeispiel} zeigt einen beispielhaften Lorentzfit. Der Fitparameter $\tau$ ist hierbei die Lebensdauer des Quecksilber-Zustands.
 
+\gra[1]{warm0-5}{Beispielhafter Lorentz-Fit\label{lorentzbeispiel}}
+\newpage
+\subsection{Dispersionsfit}
+Für die Polarisation $Pol=45°$ ist der erwartete Verlauf eine Dispersionskurve (siehe !!!REF!!!). An diese Daten fitten wir also folgende Funktion:
+\begin{align}
+	I(\omega_L)&=D+\frac C2\left(2-\frac{(2(\omega_L-\omega)\tau)}{(1+(2(\omega_L-\omega)\tau)^2)^2}\right)
+\end{align}
+Abbildung \ref{dispbeispiel} zeigt einen beispielhaften Dispersionsfit. Auch hierbei ist der Fitparameter $\tau$ die Lebenszeit.
 
+\gra[1]{warm45-8}{Beispielhafter Dispersionsfit\label{dispbeispiel}}
+\newpage
+\subsection{Dampfdruck-Extrapolation}
+Wie in Kapitel \ref{Coherence} besprochen, hängen die gemessenen Lebensdauern vom Dampfdruck ab. Um aus den gemessenen Lebensdauern die tatsächliche Lebensdauer zu bestimmen, tragen wir diese über den Dampfdruck auf und extrapolieren aus dem daraus erwarteten linearen Zusammenhang die Lebensdauer für $p=0$. Den Dampfdruck $p$ erhalten wir aus der Temperatur durch die empirische Formel (\ref{Tp})\textsuperscript{\cite{anleitung}}:
+\begin{align}
+	p&=p_c\cdot\exp\left(\frac{T_c}{T}\left(a_1T_r+a_2Tr^{1.89}+a_3T_r^2+a_4T_r^8+a_5T_r^8.5+a_6T_r^9\right)\right) &\text{mit }T_r=1-\frac{T}{T_c}\label{druckformel}
+\end{align}
+Aus den gemessenen Temperaturen berechnen wir mit Gleichung (\ref{druckformel}) den Dampfdruck. Wir tragen die gemessenen Lebensdauern über den Druck auf und bestimmen dann aus einer linearen Regression die tatsächliche Lebensdauer $\tau(p=0)$. Diese entspricht dem y-Achsenabschnitt des linearen Fits, da dieser den Wert $\tau(p=0)$ darstellt.
+
+\subsubsection{Polarisationen $Pol=0°$ und $Pol=90°$}
+\paragraph{Aufwärmvorgang}\ \\
+\graTwo{zeitdruck-warm0}{zeitdruck-warm90}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks}
+Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Parameter:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c|c|c}
+		$Pol$	&	$a / \mathrm{\frac{ns}{Pa}}$	&	$b / \mathrm{ns}$	\\\hline\hline
+		$0°$	&	$-10\pm20$	&	$123.0\pm1.7$\\\hline
+		$90°$	&	$10\pm30$	&	$129  \pm2  $
+	\end{tabular}
+\end{table}
+
+Für die Lebenszeit $\tau$ ergeben sich also folgende Werte:
+\begin{align*}
+	\tau_{0°}&=(123.0\pm1.7)\,\mathrm{ns}\\
+	\tau_{90°}&=(129\pm2)\,\mathrm{ns}
+\end{align*}
+Da die Werte für $Pol=0°$ und $Pol=90°$ bis auf ca. 2 Standardabweichungen übereinstimmen, macht es hier Sinn, ein gewichtetes Mittel der beiden Werte zu berechnen.
+\begin{align*}
+	\tau_{\text{Mittel}}&=(125.4\pm1.3)\,\mathrm{ns}
+\end{align*}
+\paragraph{Abkühlvorgang}\ \\
+\graTwo{zeitdruck-cold0}{zeitdruck-cold90}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks}
+Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Parameter:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c|c|c}
+		$Pol$	&	$a / \mathrm{\frac{ns}{Pa}}$	&	$b / \mathrm{ns}$	\\\hline\hline
+		$0°$	&	$30\pm40$	&	$115  \pm2  $\\\hline
+		$90°$	&	$100\pm60$	&	$125  \pm3  $
+	\end{tabular}
+\end{table}
+
+Für die Lebenszeit $\tau$ ergeben sich also folgende Werte:
+\begin{align*}
+\tau_{0°}&=(115.0\pm2)\,\mathrm{ns}\\
+\tau_{90°}&=(125\pm3)\,\mathrm{ns}
+\end{align*}
+Da die Werte für $Pol=0°$ und $Pol=90°$ wieder bis auf ca. 2 Standardabweichungen übereinstimmen, macht es auch hier Sinn, ein gewichtetes Mittel der beiden Werte zu berechnen.
+\begin{align*}
+	\tau_{\text{Mittel}}&=(118.5\pm1.8)\,\mathrm{ns}
+\end{align*}
+\paragraph{Mittelung}\ \\\ \\\label{Mittelung}
+Die Werte für die Aufwärm- und Abkühlvorgang sind innerhalb von 3 Standardabweichungen miteinander vereinbar.  Deshalb berechnen wir ein gewichtetes Mittel der beiden Werte. Da wir uns bei dem einem Vorgang von oben, bei dem anderen von unten angenähert haben, werden etwaige systematische Fehler wie z.B. eine verzögerte Temperaturanzeige am Thermometer durch die Mittelung minimiert.\\
+Als Ergebnis für die Lebensdauer erhalten wir nun:
+\begin{align*}
+	\tau&=123.0\pm1.1
+\end{align*}
+\subsubsection{Polarisation $Pol=45°$}
+\paragraph{Aufwärmvorgang}\ \\
+\gra[1]{zeitdruck-warm45}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks}
+Hier erhalten wir für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ folgende Parameter:
+\begin{align*}
+	a&=(-28\pm11)\,\mathrm{\frac{ns}{Pa}}\\
+	b&=(42.0\pm0.9)\,\mathrm{ns}
+\end{align*}
+Das Ergebnis für die Lebensdauer beträgt also:
+\begin{align*}
+	\tau&=(42.0\pm0.9)\,\mathrm{ns}
+\end{align*}
+\paragraph{Abkühlvorgang}\ \\
+\gra[1]{zeitdruck-cold45}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks}
+Beim Abkühlvorgang erhalten wir folgende Parameter für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$:
+\begin{align*}
+	a&=(70\pm20)\,\mathrm{\frac{ns}{Pa}}\\
+	b&=(35.1\pm1.6)\,\mathrm{ns}
+\end{align*}
+Das Ergebnis für die Lebensdauer beträgt also:
+\begin{align*}
+	\tau&=(35.1\pm1.6)\,\mathrm{ns}
+\end{align*}
+\paragraph{Mittelung}\ \\\ \\
+Die Werte für die Aufwärm- und Abkühlvorgang für $Pol=45°$ sind innerhalb von 3 Standardabweichungen miteinander vereinbar.  Aus dem gleichen Grund wie in \ref{Mittelung} ist es hier sinnvoll, ein gewichtetes Mittel der beiden Werte zu bilden.\\
+
+Für die Lebensdauer erhalten wir nun folgendes Ergebnis:
+$$\tau_{45°}=40.3\pm0.8$$
+\subsubsection{Vergleich}
+Für die Polarisationen $Pol=0°$ und $Pol=90°$ erhalten wir übereinstimmende Ergebnisse. Die Ergebnisse von $Pol=45°$ passen jedoch nicht zu den anderen Ergebnissen. Deswegen wird kein Mittelwert aus den Ergebnissen gebildet. Mehr dazu folgt in Kapitel \ref{diskussion}.
 \newpage
 \section{Zusammenfassung und Diskussion}
-
+\label{diskussion}
 
 \newpage
 \section{Anhang}

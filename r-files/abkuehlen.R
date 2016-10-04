@@ -80,7 +80,7 @@ for(i in 1:N0){
   somegaL=omegaBfactor*sB
   #plotlinear(fit,c(0,50))
   #grid()
-  png(paste(plotprefix,"0-",i,".png",sep=""))
+  png(paste(plotprefix,"0-",i,".png",sep=""),width=768,height=512)
   plot(omegaL,Int,xlab="omega_L / Hz", ylab="Intensität / V",cex=0.6,pch=4,bty="l")
   grid()
   fit=lorentzfit(data.frame(x=omegaL,y=Int))
@@ -115,7 +115,7 @@ for(i in 1:N90){
   somegaL=omegaBfactor*sB
   #plotlinear(fit,c(0,50))
   #grid()
-  png(paste(plotprefix,"90-",i,".png",sep=""))
+  png(paste(plotprefix,"90-",i,".png",sep=""),width=768,height=512)
   plot(omegaL,Int,xlab="omega_L / Hz", ylab="Intensität / V",cex=0.6,pch=4,bty="l")
   grid()
   fit=lorentzfit(data.frame(x=omegaL,y=Int),neg=TRUE)
@@ -150,7 +150,7 @@ for(i in 1:N45){
   somegaL=omegaBfactor*sB
   #plotlinear(fit,c(0,50))
   #grid()
-  png(paste(plotprefix,"45-",i,".png",sep=""))
+  png(paste(plotprefix,"45-",i,".png",sep=""),width=768,height=512)
   plot(omegaL,Int,xlab="omega_L / Hz", ylab="Intensität / V",cex=0.6,pch=4,bty="l")
   grid()
   fit=dispersionsfit(data.frame(x=omegaL,y=Int))
@@ -184,6 +184,11 @@ plotlinear(fit45,c(0,300))
 grid()
 title("Polarisation 45°")
 
+plotlindata(fit0,"K, 0°")
+plotlindata(fit45,"K, 45°")
+plotlindata(fit90,"K, 90°")
+
+
 fitInt0=linearfit(data.frame(x=T0,y=intense0),weighted=FALSE)
 fitInt45=linearfit(data.frame(x=T45,y=intense45),weighted=FALSE)
 fitInt90=linearfit(data.frame(x=T90,y=intense90),weighted=FALSE)
@@ -202,6 +207,7 @@ grid()
 title("Polarisation 45°")
 
 
+
 tau_ext=c()
 stau_ext=c()
 
@@ -216,5 +222,14 @@ tau_end=weighted.mean(tau_ext,1/stau_ext^2)*10^9
 stau_end=sqrt(1/sum(1/stau_ext^2))*10^9
 
 results=roundfunc(c(tau_end,stau_end))
+results45=roundfunc(c(tau_ext45,stau_ext45))*10^9
+results90=roundfunc(c(tau_ext[2],stau_ext[2]))*10^9
+results0=roundfunc(c(tau_ext[1],stau_ext[1]))*10^9
 
+cat(paste("Tau2_0  = (",results0[1]," +- ",results0[2],") ns\n",sep=""))
+cat(paste("Tau2_90 = (",results90[1]," +- ",results90[2],") ns\n",sep=""))
 cat(paste("Tau2 = (",results[1]," +- ",results[2],") ns\n",sep=""))
+cat(paste("Tau2_45 = (",results45[1]," +- ",results45[2],") ns\n",sep=""))
+
+tau2_45=results45[1]
+stau2_45=results45[2]

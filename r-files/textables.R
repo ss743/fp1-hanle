@@ -1,5 +1,5 @@
 starttable <- function(){
-  return("\\begin{table}[h!]\n\\scriptsize\\centering\n\\begin{tabular}{|c|l|l|l|l|}\n\\hline\n$T/K$&$D/V$&$C/V$&$\\omega/MHz$&$\\tau/ns$\\\\\\hline\\hline")
+  return("\\begin{table}[h!]\n\\footnotesize\\centering\n\\begin{tabular}{|c|l|l|l|l|}\n\\hline\n$T/K$&$D/V$&$C/V$&$\\omega/MHz$&$\\tau/ns$\\\\\\hline\\hline")
 }
 
 makeline<-function(fitdata,T){

@@ -185,6 +185,11 @@ plotlinear(fit45,c(0,300))
 grid()
 title("Polarisation 45°")
 
+plotlindata(fit0,"W, 0°")
+plotlindata(fit45,"W, 45°")
+plotlindata(fit90,"W, 90°")
+
+
 fitInt0=linearfit(data.frame(x=T0,y=intense0),weighted=FALSE)
 fitInt45=linearfit(data.frame(x=T45,y=intense45),weighted=FALSE)
 fitInt90=linearfit(data.frame(x=T90,y=intense90),weighted=FALSE)
@@ -217,5 +222,14 @@ tau_end=weighted.mean(tau_ext,1/stau_ext^2)*10^9
 stau_end=sqrt(1/sum(1/stau_ext^2))*10^9
 
 results=roundfunc(c(tau_end,stau_end))
+results45=roundfunc(c(tau_ext45,stau_ext45))*10^9
+results90=roundfunc(c(tau_ext[2],stau_ext[2]))*10^9
+results0=roundfunc(c(tau_ext[1],stau_ext[1]))*10^9
 
-cat(paste("Tau1 = (",results[1]," +- ",results[2],") ns\n",sep=""))
+cat(paste("Tau1_0  = (",results0[1]," +- ",results0[2],") ns\n",sep=""))
+cat(paste("Tau1_90 = (",results90[1]," +- ",results90[2],") ns\n",sep=""))
+cat(paste("Tau1    = (",results[1]," +- ",results[2],") ns\n",sep=""))
+cat(paste("Tau1_45 = (",results45[1]," +- ",results45[2],") ns\n",sep=""))
+
+tau1_45=results45[1]
+stau1_45=results45[2]
