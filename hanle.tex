@@ -109,19 +109,23 @@ Der Hanle-Effekt ist ein Interferenzphänomen, das durch Wechselwirkung von Magn
 
 
 
+
 \newpage
 \section{Theoretische Grundlagen}
 
 \subsection{Semiklassische Erklärung des Hanle-Effekts}
 
-Absorbiert ein einzelnes (Hg-)Atom ein Photon kann es ab diesem Zeitpunkt als oszillierender Dipol beschrieben werden. Die Dipolachse ist dann parallel zur Polarisation des absorbierten Photons. Die Abstrahlung eines solchen Dipols ist proportional zu $sin^2(\phi) $, wobei $\phi$ den Winkel zwischen Dipolacse und Beobachtungsrichtung bezeichnet, und der Übergang des angeregten Elektrons in den Grundzustand wird durch den Faktor $e^{-t/\tau}$
+Absorbiert ein einzelnes (Hg-)Atom ein Photon kann es ab diesem Zeitpunkt als oszillierender Dipol beschrieben werden. Die Dipolachse ist dann parallel zur Polarisation des absorbierten Photons. 
+
+
+Die Abstrahlung eines solchen Dipols ist proportional zu $sin^2(\phi) $, wobei $\phi$ den Winkel zwischen Dipolacse und Beobachtungsrichtung bezeichnet, und der Übergang des angeregten Elektrons in den Grundzustand wird durch den Faktor $e^{-t/\tau}$
 Die Gesamtintensität I der Anregung eines einzelnen Atoms ist dann durch folgenden Zusammenhang gegeben:
 
 \begin{align}
 I=C\int_{0}^{\infty}e^{-\frac{t}{\tau}}\sin^2(\theta(t)) dt
 \end{align}
 
-Wirkt nun ein äußeres Magnetfeld $\vec{B}$ senkrecht zur Oszillation auf den Dipol, fängt dieser an um seine Achse zu präzedieren, wobei die Ebene der Präzisionsbewegung senkrecht zur Ebenen des Magnetfeldes $\vec{B}$ ist. Da man eine starre Verbindung zwischen Dipolmoment und magnetischen Moment $\mu$ annimmt, präzidiert auch dieses. Dabei gilt im schwachen Magnetfeld folgende Bewegungsgleichung:
+Wirkt nun ein äußeres Magnetfeld $\vec{B}$ senkrecht zur Oszillation auf den Dipol, fängt dieser an um seine Achse zu präzedieren, wobei die Ebene der Präzisionsbewegung senkrecht zur Ebenen des Magnetfeldes $\vec{B}$ ist. Da man eine starre Verbindung zwischen Dipolmoment und magnetischen Moment $\mu$ annimmt, präzidiert auch dieses (siehe Abbildung \ref{SK}). Dabei gilt im schwachen Magnetfeld folgende Bewegungsgleichung:
 
 \begin{align}
 \frac{d\vec{\mu}}{dt} = \frac{\omega_L}{B}\vec{\mu}\times\vec{B}
@@ -133,7 +137,10 @@ mit
 \omega_L=\frac{g_J\mu_B}{\hbar}B
 \end{align}
 
-wobei $\omega_L$ die Lamorfrequenz bezeichnet, $g_j$ den Landéfaktor und $\mu_B$ das Bohr'sche Magneton
+wobei $\omega_L$ die Lamorfrequenz bezeichnet, $g_j$ den Landéfaktor (sihe \ref{LF})und $\mu_B$ das Bohr'sche Magneton.
+
+\gra[0.5]{Hanle_SK1}{Präzisionsbewegung eines Oszillators \label{SK}}
+
 In y-Richtung steigt die Intensität bis zu einem gewissen Sättigungswert an. Es ergibt sich für diese also bei zum Zeitpunkt der Absorption zur Beobachtungsrichtung paralleler Dipolachse, d.h. $\theta(t)=\omega_L t$ und $\theta(t=0)=0$
 
 \begin{align}
@@ -147,40 +154,58 @@ I=C\int_{0}^{\infty}e^{-\frac{t}{\tau}}\sin^2(\omega_L t)=\frac{C\tau}{2}\cdot\l
 \end{align}
  
 Gleichung \ref{LK0} entspricht einer normalen Lorentzkurve.\\
-Die mittlere Lebensdauer berechnet sich aus der Halbwertsbreite (FWHM) der Lorentzkurve $B_{FW}$. Es gilt:
+Die mittlere Lebensdauer berechnet sich aus der Halbwertsbreite (FWHM) der Lorentzkurve $B_{FW}$ (siehe Abbildung \ref{LK2}). Es gilt:
 \begin{align}
-\tau=\frac{\hbar}{g_J\mu_B B_{FW}}
+\tau=\frac{\hbar}{g_J\mu_B B_{FW}} \label{LK1}
 \end{align}
 
+\gra[0.7]{FWHM}{Darstellung einer Lorentzkurve \label{LK2}}
+
+Die Ableitung der Lorentzverteilung hat die Form einer Dispersionskurve (siehe Abbildung \ref{45}) und ist durch folgenden Zusammenhang gegeben:
+
+\begin{align}
+\frac{d}{d(2\omega_L \tau)}I = C'\left( \frac{(2\omega_L \tau)^2}{(1+(2\omega_L \tau)^2)^2}\right) 
+\end{align}
+
+\gra[0.5]{Einhorn45}{Lorentzkurve (blau) und Dispersionskurve
+	(schwarz) \label{45}}
+
+Diese Dispersionskurve kann bei einer Polarisationsfiltereinstellung von 45° gemessen werden.
 
 
-
-
-\gra[0.5]{Hanle_SK1}{Präzisionsbewegung eines Oszillators}
-
-\gra[0.7]{FWHM}{Darstellung einer Lorentzkurve}
 \subsection{Quantenmechanische Erklärung des Hanle-Effekts}
 
-Bei den Elektronen der Atomorbitale kommt es zur Entartung von Energieniveuas unterschiedlicher Quantenzahlen $m_j$. Durch Anlegen eines äußeren Magnetfeldes (Zeeman-Effekt) oder Berücksichtigung der Feinstrukturaufspaltung (ursache hierfür ist die Spin-Bahn-Wechselwirkung) kann diese Entartung aufgehoben werden. Bei passendem Magnetfeld kann es aber gerade zum sogenannten level-crossing kommen, bei dem es zu einer Überkreuzung bzw. einer Entartung von Energieniveaus verschiedener Zustände kommt. Ein Spezialfall des level-crossings ist der Hanle-Effekt, der bei einem Magnetfeld mit $B=0$ stattfindet.
+Bei den Elektronen der Atomorbitale kommt es zur Entartung von Energieniveuas unterschiedlicher Quantenzahlen $m_j$. Durch Anlegen eines äußeren Magnetfeldes (Zeeman-Effekt, siehe Abbildung \ref{QM} links) oder Berücksichtigung der Feinstrukturaufspaltung (ursache hierfür ist die Spin-Bahn-Wechselwirkung) kann diese Entartung aufgehoben werden. Bei passendem Magnetfeld kann es aber gerade zum sogenannten level-crossing kommen, bei dem es zu einer Überkreuzung bzw. einer Entartung von Energieniveaus verschiedener Zustände kommt wie in Abbildung \ref{QM} rechts zu sehen. Ein Spezialfall des level-crossings ist der Hanle-Effekt, der bei einem Magnetfeld mit $B=0$ stattfindet.
 Eben diese entarteten Zustände sind energetisch ununterscheidbar und können kohärent angeregt werden, sodass es bei Abregung zur Interferenz kommt. Dieses Phänomen wird als Resonanzfluoreszenz bezeichnet.   
 
-\graTwo[0.4]{Hanle_QM}{Hanle_QM1}{ Aufspaltung der verschiedenen $m_J$ eines Zustandes im Magnetfeld (Zeeman-Effekt), rechts: level-crossing bei angelegtem Magnetfeld \cite{staat}}
+\graTwo[0.4]{Hanle_QM}{Hanle_QM1}{ Aufspaltung der verschiedenen $m_J$ eines Zustandes im Magnetfeld (Zeeman-Effekt), rechts: level-crossing bei angelegtem Magnetfeld \cite{staat} \label{QM}}
 %
 In diesem Versuch wird der $^3\mathrm{P}_1$ Zustand von Quecksilber betrachtet, der eine dreifache Entartung aufweist:
 \[J=1\Longrightarrow\ m_J=\pm1,0 \]
-Beim Anlegen eines äußeren Magnetfeldes
- Die Energieänderung hängt von der Projektion des Drehimpulses der Elektronen auf den Megnetfeldvektor ab. Daraus folgt dass $m_J=\pm1$ linear ansteigt beziehungsweise abfällt. Die Energie von $m_J=0$ bleibt gleich. Findet nun eine Anregung des Zustands mit Photonen statt, gibt es eine gewisse Wahrscheinlichkeit, dass ein Elektron in einen höheren Zustand übergeht.
-%\[f_{\mu m}=\bra{\mu}\hat{r}\cdot\hat{f}\ket{m}\hspace{1cm}\mbox{Übergangsmatrixelement}\]
-%\begin{itemize}
-%	\item $\hat{r}$ ist der Ortsvektor des Elektrons
-%	\item $\hat{f}$ ist der Polarisationsoperator der Photonen
-%	\item $\bra{\mu}$ ist der angeregte Zustand
-%	\item $\ket{m}$ ist der Grundzustand
-%\end{itemize}
-%
-%%Man erkennt, dass die Gesamtwellenfunktion eine Superposition vieler Übergangswellenfunktionen ist. Mit der Breit-Formel kommt man dann auf das Ergebnis des semiklassischen Ansatzes.
+Beim Anlegen eines äußeren Magnetfeldes ändert sich die Energie der einzelnen Zustände abhängig von der Projektion des Drehimpulses der Elektronen auf den Vektor des Magnetfeldes. Für $m_J=\pm1$ steigt die Energie linear, bzw. fällt linear ab während sie für $m_J=0$ gleich bleibt.
+Die Wahrscheinlichkeit, dass ein Elektron des Zustandes $\ket{m}$ bei Anregung mit Photonen in einen höheren Zustand $\bra{\mu}$ übergeht, ist durch das Betragsquadrat des Übergangsmatrixelementes gegeben, welches wie folgt definiert ist:
 
-\newpage
+\begin{align}
+f_{\mu m}=\bra{\mu}\hat{r}\cdot\hat{f}\ket{m}\hspace{1cm}
+\end{align}
+
+wobei $\hat{r}$ der Ortsvektor des Elektrons ist und $\hat{f}$ der Polarisationsoperator der Photonen.
+
+Die Gesamtwellenfunktionen ist durch eine Superposition verschiedener Übergangswellenfunktionen gegeben. Mit Hilfe der Breit-Formel erhält man wieder Das Ergebnis des semiklassischen Ansatzes (siehe \cite{anleitung}).
+ 
+\subsection{Landéfaktor \label{LF}}          
+
+Der Gesamtdrehimpulses $\vec{J}$ eines Elektrons setzt sich aus dem Bahndrehimpuls $\vec{L}$ und dem Spin Spin $\vec{S}$ zusammen. Auf Grund dieser Tatsache muss das allgemein gebräuchliche Bohrsche Magneton $\mu_B=(e\hbar)/(2m)$, das ein Proportionalitätsfaktor des magnetischen Moments $\vec{\mu}=(\mu_B\vec{L})/\hbar$ zum Drehimpuls darstellt, mit dem sogenannten Landéfaktor erweitert werden, der wie folgt gegeben ist:
+\begin{align}
+g_J=\frac{J(J+1)-L(L+1)+S(S+1)}{2J(J+1)}
+\end{align}
+
+In diesem Versuch ist diese Formel jedoch nicht uneingeschränkt anwendbar, da wir hier eine Mischung zwischen LS-Kopplung und jj-Kopplung vorliegen haben. Für den hier zu untersuchenden Zustand Zustand ${}^3P_1$ wurde experimentell ein Wert von  $g_J=1.4838$ bestimmt.
+
+
+
+
+
 \subsection{Coherence Narrowing und Dampfdruck \label{Coherence}}
 
 Coherence Narrowing beschreibt im Allgemeinen den Effekt, dass durch Absorption und Reemission eines Photons die Laufzeit im Medium verlängert wird und dadurch der gemessene Peak schmäler wird, die Lebenszeit länger.
@@ -198,6 +223,10 @@ Die Parameter sind dabei:
 a_1&=-4.57618368\hspace{1cm} a_2=-1.40726277\hspace{1cm} a_3=2.36263541\\
 a_4&=31.0889985\hspace{1.3cm} a_5=58.0183959\hspace{1.4cm} a_6=-27.6304546
 \end{align*}
+
+
+
+
 
 \newpage
 \section{Versuchsaufbau}
