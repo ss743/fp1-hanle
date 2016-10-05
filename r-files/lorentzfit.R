@@ -20,7 +20,9 @@ lorentzfit<-function(input,neg=FALSE){
   
   try({
     fit=nls(lorentz,input,start=list(D=D0,C=C0,omega=omega0,tau=tau0))
-    return(summary(fit)$parameters)
+    chiquadratndf=sum(residuals(fit)^2/abs(fitted(fit)))/summary(fit)$df[2]
+    fitdata=rbind(summary(fit)$parameters,c(chiquadratndf,0,0,0))
+    return(fitdata)
   })
   
   return(NULL)
@@ -42,7 +44,9 @@ dispersionsfit<-function(input){
   
   try({
     fit=nls(disp,input,start=list(D=D0,C=C0,omega=omega0,tau=tau0))
-    return(summary(fit)$parameters)
+    chiquadratndf=sum(residuals(fit)^2/abs(fitted(fit)))/summary(fit)$df[2]
+    fitdata=rbind(summary(fit)$parameters,c(chiquadratndf,0,0,0))
+    return(fitdata)
   })
   
   return(NULL)

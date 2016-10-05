@@ -77,6 +77,16 @@
 	\end{minipage}
 	\vskip 30 pt
 }
+\newcommand{\graThree}[5][0.325]{
+	\begin{minipage}[h!]{\textwidth}
+		\centering
+		\includegraphics[width=#1\textwidth]{figures/#2.png}
+		\includegraphics[width=#1\textwidth]{figures/#3.png}
+		\includegraphics[width=#1\textwidth]{figures/#4.png}
+		\captionof{figure}{#5}
+	\end{minipage}
+	\vskip 30 pt
+}
 \newcommand{\del}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\code}[1]{\texttt{#1}}
 
@@ -159,10 +169,10 @@ Aus den gemessenen Temperaturen berechnen wir mit Gleichung (\ref{druckformel}) 
 Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Parameter:
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{c|c|c}
-		$Pol$	&	$a / \mathrm{\frac{ns}{Pa}}$	&	$b / \mathrm{ns}$	\\\hline\hline
-		$0°$	&	$-10\pm20$	&	$123.0\pm1.7$\\\hline
-		$90°$	&	$10\pm30$	&	$129  \pm2  $
+	\begin{tabular}{c|c|c|r}
+		$Pol$	&	$a / \mathrm{\frac{ns}{Pa}}$	&	$b / \mathrm{ns}$	& $\chi^2$ / ndf	\\\hline\hline
+		$0°$	&	$-10\pm20$	&	$123.0\pm1.7$	&	$0.074$\\\hline
+		$90°$	&	$10\pm30$	&	$129  \pm2  $	&	$0.077$
 	\end{tabular}
 \end{table}
 
@@ -232,6 +242,13 @@ Für die Lebensdauer erhalten wir nun folgendes Ergebnis:
 $$\tau_{45°}=40.3\pm0.8$$
 \subsubsection{Vergleich}
 Für die Polarisationen $Pol=0°$ und $Pol=90°$ erhalten wir übereinstimmende Ergebnisse. Die Ergebnisse von $Pol=45°$ passen jedoch nicht zu den anderen Ergebnissen. Deswegen wird kein Mittelwert aus den Ergebnissen gebildet. Mehr dazu folgt in Kapitel \ref{diskussion}.
+\newpage
+
+\subsection{Intensitätsverlauf}
+\graThree{intense-warm0}{intense-warm45}{intense-warm90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Aufwärmvorgangs\label{intense-warm}}
+\graThree{intense-cold0}{intense-cold45}{intense-cold90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Abkühlvorgangs\label{intense-cold}}
+In den Abbildungen \ref{intense-warm} und \ref{intense-cold} sind die Amplituden der Lorentz-Fits über die Zeit aufgetragen. Man erkennt einen linear abnehmenden Verlauf, an welchen eine Gerade gefittet wurde.
+
 \newpage
 \section{Zusammenfassung und Diskussion}
 \label{diskussion}

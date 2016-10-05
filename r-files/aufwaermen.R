@@ -28,6 +28,10 @@ tau0=c()
 tau45=c()
 tau90=c()
 
+chi0=c()
+chi45=c()
+chi90=c()
+
 intense0=c()
 intense45=c()
 intense90=c()
@@ -90,6 +94,7 @@ for(i in 1:N0){
   plotlorentz(fit,c(-6,6)*10^7)
   title(paste("Aufwärmvorgang - Nr. ",i," - T=",T0[i],"K; Pol=0°",sep=""))
   dev.off()
+  chi0[i]=fit[5,1]
   tau0[i]=abs(fit["tau","Estimate"])
   stau0[i]=fit["tau","Std. Error"]
   intense0[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
@@ -125,6 +130,7 @@ for(i in 1:N90){
   plotlorentz(fit,c(-6,6)*10^7)
   title(paste("Aufwärmvorgang - Nr. ",i," - T=",T90[i],"K; Pol=90°",sep=""))
   dev.off()
+  chi90[i]=fit[5,1]
   tau90[i]=abs(fit["tau","Estimate"])
   stau90[i]=fit["tau","Std. Error"]
   intense90[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
@@ -160,6 +166,7 @@ for(i in 1:N45){
   title(paste("Aufwärmvorgang - Nr. ",i," - T=",T45[i],"K; Pol=45°",sep=""))
   dev.off()
   #text(4*10^7,(par("yaxp")[2]-par("yaxp")[1])*3/4+par("yaxp")[1],getdispformula(fit),cex=0.8)
+  chi45[i]=fit[5,1]
   tau45[i]=abs(fit["tau","Estimate"])
   stau45[i]=fit["tau","Std. Error"]
   intense45[i]=1/2*abs(optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=TRUE)$objective-optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=FALSE)$objective)
@@ -171,6 +178,10 @@ cat(table45,file="../tables/warm45.tex")
 fit0=linearfit(data.frame(x=P0,y=tau0,sy=stau0),weighted=TRUE)
 fit45=linearfit(data.frame(x=P45,y=tau45,sy=stau45),weighted=TRUE)
 fit90=linearfit(data.frame(x=P90,y=tau90,sy=stau90),weighted=TRUE)
+
+cat(paste("\nW_tau, 0°: Chi_quadrat=",fit0[5]*10^9,sep=""))
+cat(paste("\nW_tau, 45°: Chi_quadrat=",fit45[5]*10^9,sep=""))
+cat(paste("\nW_tau, 90°: Chi_quadrat=",fit90[5]*10^9,sep=""))
 
 plotCI(P0,tau0,uiw=stau0,cex=0.6,pch=4,bty="l",xlab="p / Pa", ylab="Tau / s")
 plotlinear(fit0,c(0,300))
@@ -193,6 +204,10 @@ plotlindata(fit90,"W, 90°")
 fitInt0=linearfit(data.frame(x=T0,y=intense0),weighted=FALSE)
 fitInt45=linearfit(data.frame(x=T45,y=intense45),weighted=FALSE)
 fitInt90=linearfit(data.frame(x=T90,y=intense90),weighted=FALSE)
+
+cat(paste("\nW_i, 0°: Chi_quadrat=",fitInt0[5],sep=""))
+cat(paste("\nW_i, 45°: Chi_quadrat=",fitInt45[5],sep=""))
+cat(paste("\nW_i, 90°: Chi_quadrat=",fitInt90[5],sep=""))
 
 plot(T0,intense0,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Amplitude / V")
 plotlinear(fitInt0,c(0,300))

@@ -22,8 +22,10 @@ linearfit <- function(input,bereich=c(min(input$x),max(input$x)),weighted=FALSE)
     
     intererr=summary(fit)$coefficients[["(Intercept)","Std. Error"]]
     slopeerr=summary(fit)$coefficients[["x","Std. Error"]]
+    
+    chiquadratndf=sum(residuals(fit)^2/abs(fitted(fit)))/(summary(fit)$df[2]-1)
   })  
-  return(c(intercept,slope,intererr,slopeerr))
+  return(c(intercept,slope,intererr,slopeerr,chiquadratndf))
 }
 
 plotlinear <- function(fitdata,grenzen){

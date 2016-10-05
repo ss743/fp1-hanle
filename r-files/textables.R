@@ -1,5 +1,5 @@
 starttable <- function(){
-  return("\\begin{table}[h!]\n\\footnotesize\\centering\n\\begin{tabular}{|c|l|l|l|l|}\n\\hline\n$T/K$&$D/V$&$C/V$&$\\omega/MHz$&$\\tau/ns$\\\\\\hline\\hline")
+  return("\\begin{table}[h!]\n\\footnotesize\\centering\n\\begin{tabular}{|c||l|l|l|l||c|}\n\\hline\n$T/K$&$D/V$&$C/V$&$\\omega/MHz$&$\\tau/ns$&$\\chi^2$ / ndf\\\\\\hline\\hline")
 }
 
 makeline<-function(fitdata,T){
@@ -17,7 +17,7 @@ makeline<-function(fitdata,T){
   omega=pm(roundfunc(c(omega0,somega))*10^(-6))
   tau=pm(roundfunc(c(tau0,stau))*10^9)
   
-  return(paste("$",T,"$&$",D,"$&$",C,"$&$",omega,"$&$",tau,"$\\\\\\hline",sep=""))
+  return(paste("$",T,"$&$",D,"$&$",C,"$&$",omega,"$&$",tau,"$&$",fitdata[5,1],"$\\\\\\hline",sep=""))
 }
 
 endtable <- function(caption="",label=""){
