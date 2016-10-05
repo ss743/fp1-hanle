@@ -95,7 +95,7 @@ for(i in 1:N0){
   chi0[i]=fit[5,1]
   tau0[i]=abs(fit["tau","Estimate"])
   stau0[i]=fit["tau","Std. Error"]
-  intense0[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
+  intense0[i]=fit["D","Estimate"]
   table0=paste(table0,makeline(fit,T0[i]),sep="\n")
 }
 table0=paste(table0,endtable("Abkühlvorgang, Polarisation: 0°",label="cold0"),sep="\n")
@@ -132,7 +132,7 @@ for(i in 1:N90){
   
   tau90[i]=abs(fit["tau","Estimate"])
   stau90[i]=fit["tau","Std. Error"]
-  intense90[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
+  intense90[i]=fit["D","Estimate"]
   table90=paste(table90,makeline(fit,T0[i]),sep="\n")
 }
 table90=paste(table90,endtable("Abkühlvorgang, Polarisation: 90°",label="cold90"),sep="\n")
@@ -168,7 +168,7 @@ for(i in 1:N45){
   chi45[i]=fit[5,1]
   tau45[i]=abs(fit["tau","Estimate"])
   stau45[i]=fit["tau","Std. Error"]
-  intense45[i]=1/2*abs(optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=TRUE)$objective-optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=FALSE)$objective)
+  intense45[i]=fit["D","Estimate"]
   table45=paste(table45,makeline(fit,T0[i]),sep="\n")
 }
 table45=paste(table45,endtable("Abkühlvorgang, Polarisation: 45°",label="cold45"),sep="\n")
@@ -200,27 +200,42 @@ plotlindata(fit0,"K, 0°")
 plotlindata(fit45,"K, 45°")
 plotlindata(fit90,"K, 90°")
 
-fitInt0=linearfit(data.frame(x=T0,y=intense0),weighted=FALSE)
-fitInt45=linearfit(data.frame(x=T45,y=intense45),weighted=FALSE)
-fitInt90=linearfit(data.frame(x=T90,y=intense90),weighted=FALSE)
+si0 =abs(intense0 *0.03)
+si45=abs(intense45*0.03)
+si90=abs(intense90*0.03)
+
+sT0 =0.5
+sT45=0.5
+sT90=0.5
+
+fitInt0=linearfit(data.frame(x=T0,y=intense0,sy=si0),weighted=TRUE)
+fitInt45=linearfit(data.frame(x=T45,y=intense45,sy=si45),weighted=TRUE)
+fitInt90=linearfit(data.frame(x=T90,y=intense90,sy=si90),c(271,300),weighted=TRUE)
 
 cat(paste("\nK_i, 0°: Chi_quadrat=",fitInt0[5],sep=""))
 cat(paste("\nK_i, 45°: Chi_quadrat=",fitInt45[5],sep=""))
 cat(paste("\nK_i, 90°: Chi_quadrat=",fitInt90[5],sep=""))
 
-plot(T0,intense0,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Amplitude / V")
+plotCI(T0,intense0,uiw=si0,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Grundintensität / V")
+plotCI(T0,intense0,uiw=sT0,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fitInt0,c(0,300))
 grid()
 title("Polarisation 0°")
-plot(T90,intense90,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Amplitude / V")
+plotCI(T90,intense90,uiw=si90,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Grundintensität / V")
+plotCI(T90,intense90,uiw=sT90,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fitInt90,c(0,300))
 grid()
 title("Polarisation 90°")
-plot(T45,intense45,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Amplitude / V")
+plotCI(T45,intense45,uiw=si45,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Grundintensität / V")
+plotCI(T45,intense45,uiw=sT45,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fitInt45,c(0,300))
 grid()
 title("Polarisation 45°")
 
+cat("\n")
+plotlindata(fitInt0,"Kalt - Polarisation 0°")
+plotlindata(fitInt45,"Kalt - Polarisation 45°")
+plotlindata(fitInt90,"Kalt - Polarisation 90°")
 
 
 tau_ext=c()

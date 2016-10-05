@@ -162,15 +162,15 @@ Wie in Kapitel \ref{Coherence} besprochen, hängen die gemessenen Lebensdauern v
 	p&=p_c\cdot\exp\left(\frac{T_c}{T}\left(a_1T_r+a_2Tr^{1.89}+a_3T_r^2+a_4T_r^8+a_5T_r^8.5+a_6T_r^9\right)\right) &\text{mit }T_r=1-\frac{T}{T_c}\label{druckformel}
 \end{align}
 Aus den gemessenen Temperaturen berechnen wir mit Gleichung (\ref{druckformel}) den Dampfdruck. Wir tragen die gemessenen Lebensdauern über den Druck auf und bestimmen dann aus einer linearen Regression die tatsächliche Lebensdauer $\tau(p=0)$. Diese entspricht dem y-Achsenabschnitt des linearen Fits, da dieser den Wert $\tau(p=0)$ darstellt.
-
+\newpage
 \subsubsection{Polarisationen $Pol=0°$ und $Pol=90°$}
 \paragraph{Aufwärmvorgang}\ \\
-\graTwo{zeitdruck-warm0}{zeitdruck-warm90}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks}
-Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Parameter:
+\graTwo{zeitdruck-warm0}{zeitdruck-warm90}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-w}}
+Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Paramete (siehe Abbildung \ref{zeitdruck-w}):
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{c|c|c|r}
-		$Pol$	&	$a / \mathrm{\frac{ns}{Pa}}$	&	$b / \mathrm{ns}$	& $\chi^2$ / ndf	\\\hline\hline
+	\begin{tabular}{c|c|c||r}
+		$Pol$	&	$a\,/\,\mathrm{\frac{ns}{Pa}}$	&	$b\,/\,\mathrm{ns}$	& $\chi^2$/ndf	\\\hline\hline
 		$0°$	&	$-10\pm20$	&	$123.0\pm1.7$	&	$0.074$\\\hline
 		$90°$	&	$10\pm30$	&	$129  \pm2  $	&	$0.077$
 	\end{tabular}
@@ -186,14 +186,14 @@ Da die Werte für $Pol=0°$ und $Pol=90°$ bis auf ca. 2 Standardabweichungen ü
 	\tau_{\text{Mittel}}&=(125.4\pm1.3)\,\mathrm{ns}
 \end{align*}
 \paragraph{Abkühlvorgang}\ \\
-\graTwo{zeitdruck-cold0}{zeitdruck-cold90}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks}
-Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Parameter:
+\graTwo{zeitdruck-cold0}{zeitdruck-cold90}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-c}}
+Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Parameter (siehe Abbildung \ref{zeitdruck-c}):
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{c|c|c}
-		$Pol$	&	$a / \mathrm{\frac{ns}{Pa}}$	&	$b / \mathrm{ns}$	\\\hline\hline
-		$0°$	&	$30\pm40$	&	$115  \pm2  $\\\hline
-		$90°$	&	$100\pm60$	&	$125  \pm3  $
+	\begin{tabular}{c|c|c||r}
+		$Pol$	&	$a\,/\,\mathrm{\frac{ns}{Pa}}$	&	$b\,/\,\mathrm{ns}$	& $\chi^2$/ndf	\\\hline\hline
+		$0°$	&	$30\pm40$	&	$115  \pm2  $	&	$0.21$\\\hline
+		$90°$	&	$100\pm60$	&	$125  \pm3  $	&	$2.27$
 	\end{tabular}
 \end{table}
 
@@ -212,26 +212,29 @@ Als Ergebnis für die Lebensdauer erhalten wir nun:
 \begin{align*}
 	\tau&=123.0\pm1.1
 \end{align*}
+\newpage
 \subsubsection{Polarisation $Pol=45°$}
 \paragraph{Aufwärmvorgang}\ \\
-\gra[1]{zeitdruck-warm45}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks}
-Hier erhalten wir für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ folgende Parameter:
+\gra[1]{zeitdruck-warm45}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-w45}}
+Hier erhalten wir für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ folgende Parameter (siehe Abbildung \ref{zeitdruck-w45}):
 \begin{align*}
 	a&=(-28\pm11)\,\mathrm{\frac{ns}{Pa}}\\
 	b&=(42.0\pm0.9)\,\mathrm{ns}
 \end{align*}
-Das Ergebnis für die Lebensdauer beträgt also:
+Für die Güte des Fits berechnen wir den $\chi^2$-Wert: $\chi^2\text{ / ndf}=0.044$.\\\ \\
+Das Ergebnis für die Lebensdauer beträgt nun:
 \begin{align*}
 	\tau&=(42.0\pm0.9)\,\mathrm{ns}
 \end{align*}
 \paragraph{Abkühlvorgang}\ \\
-\gra[1]{zeitdruck-cold45}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks}
-Beim Abkühlvorgang erhalten wir folgende Parameter für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$:
+\gra[1]{zeitdruck-cold45}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-c45}}
+Beim Abkühlvorgang erhalten wir folgende Parameter für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ (siehe Abbildung \ref{zeitdruck-c45}):
 \begin{align*}
 	a&=(70\pm20)\,\mathrm{\frac{ns}{Pa}}\\
 	b&=(35.1\pm1.6)\,\mathrm{ns}
 \end{align*}
-Das Ergebnis für die Lebensdauer beträgt also:
+Für die Güte des Fits berechnen wir den $\chi^2$-Wert: $\chi^2\text{ / ndf}=0.30$.\\\ \\
+Das Ergebnis für die Lebensdauer beträgt nun:
 \begin{align*}
 	\tau&=(35.1\pm1.6)\,\mathrm{ns}
 \end{align*}
@@ -247,9 +250,27 @@ Für die Polarisationen $Pol=0°$ und $Pol=90°$ erhalten wir übereinstimmende 
 \subsection{Intensitätsverlauf}
 \graThree{intense-warm0}{intense-warm45}{intense-warm90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Aufwärmvorgangs\label{intense-warm}}
 \graThree{intense-cold0}{intense-cold45}{intense-cold90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Abkühlvorgangs\label{intense-cold}}
-In den Abbildungen \ref{intense-warm} und \ref{intense-cold} sind die Amplituden der Lorentz-Fits über die Zeit aufgetragen. Man erkennt einen linear abnehmenden Verlauf, an welchen eine Gerade gefittet wurde.
+In den Abbildungen \ref{intense-warm} und \ref{intense-cold} sind die Amplituden der Lorentz-Fits über die Zeit aufgetragen. Man erkennt einen linear abnehmenden Verlauf, an welchen eine Gerade gefittet wurde ($I(T)=a\cdot T+b$).\\
 
-\newpage
+Die Parameter der Fitdaten sind in Tabelle \ref{fitdaten} zu finden.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c||c|c||r}
+		$Pol$	&	$a\,/\,\mathrm{\frac{V}{K}}$	&	$b\,/\,\mathrm{V}$	& $\chi^2$/ndf	\\\hline\hline
+		\textbf{Aufwärmen}	&	&	&	\\\hline
+		0°	&	$-34.8\pm0.9$	&	$11100\pm300$	&	0.19	\\\hline
+		45°	&	$-9.0\pm0.3$	&	$2830\pm80$		&	0.10	\\\hline
+		90° &	$-33.2\pm0.5$	&	$10280\pm160$	&	0.09	\\\hline\hline
+		\textbf{Abkühlen}	&	&	&	\\\hline
+		0°	&	$-12.6\pm0.4$	&	$3810\pm110$	&	0.48	\\\hline
+		45°	&	$-2.72\pm0.09$	&	$820\pm30$		&	0.12	\\\hline
+		90° &	$-9.2\pm0.3$	&	$2730\pm80$ 	&	0.43		
+	\end{tabular}
+	\caption{Fitdaten der Intensitätsverläufe aus den Abbildungen \ref{intense-warm} und \ref{intense-cold}\label{fitdaten}}
+\end{table}
+
+\clearpage
 \section{Zusammenfassung und Diskussion}
 \label{diskussion}
 
