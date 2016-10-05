@@ -100,7 +100,12 @@
 
 \section*{Abstract}
 
-
+Der Hanle-Effekt ist ein Interferenzphänomen, das durch Wechselwirkung von Magnetfeldern mit Materie entsteht. Eine der möglichen Anwendungen ist in spektographischen Untersuchungen die Bestimmung der Lebensdauer angeregter Zustände. In diesem Versuch wird mit Hilfe des Hanle-Effekts die Lebensdauer des $^3P_1$ Zustandes von Helium bestimmt. Da Absorption und Reemission zur Verlängerung der Laufzeit in einem dichten, homogenen Medium führt, werden die Messungen bei unterschiedlichen Temperaturen (und damit bei verschiedenen Drücken und Dichten) durchgeführt, d.h. einmal während eines Aufwärmevorgangs sowie einmal während eines Abkühlvorgangs. Als Ergebnis erhielten wir:
+\begin{itemize}
+	\item Aufwärmen: $\tau_{auf} = 125.4 \pm 1.3 ns$
+	\item Abkühlen: $\tau_{ab} = 118.5 \pm 1.8 ns$
+	\item Mittel: $\tau_{ges} = 123.0 \pm 1.1 ns$
+\end{itemize}
 
 \newpage
 
@@ -113,12 +118,152 @@
 \section{Einleitung}
 
 
+
+
 \newpage
 \section{Theoretische Grundlagen}
 
+\subsection{Semiklassische Erklärung des Hanle-Effekts}
+
+Absorbiert ein einzelnes (Hg-)Atom ein Photon kann es ab diesem Zeitpunkt als oszillierender Dipol beschrieben werden. Die Dipolachse ist dann parallel zur Polarisation des absorbierten Photons. 
+
+
+Die Abstrahlung eines solchen Dipols ist proportional zu $sin^2(\phi) $, wobei $\phi$ den Winkel zwischen Dipolacse und Beobachtungsrichtung bezeichnet, und der Übergang des angeregten Elektrons in den Grundzustand wird durch den Faktor $e^{-t/\tau}$
+Die Gesamtintensität I der Anregung eines einzelnen Atoms ist dann durch folgenden Zusammenhang gegeben:
+
+\begin{align}
+I=C\int_{0}^{\infty}e^{-\frac{t}{\tau}}\sin^2(\theta(t)) dt
+\end{align}
+
+Wirkt nun ein äußeres Magnetfeld $\vec{B}$ senkrecht zur Oszillation auf den Dipol, fängt dieser an um seine Achse zu präzedieren, wobei die Ebene der Präzisionsbewegung senkrecht zur Ebenen des Magnetfeldes $\vec{B}$ ist. Da man eine starre Verbindung zwischen Dipolmoment und magnetischen Moment $\mu$ annimmt, präzidiert auch dieses (siehe Abbildung \ref{SK}). Dabei gilt im schwachen Magnetfeld folgende Bewegungsgleichung:
+
+\begin{align}
+\frac{d\vec{\mu}}{dt} = \frac{\omega_L}{B}\vec{\mu}\times\vec{B}
+\end{align}
+
+mit 
+
+\begin{align}
+\omega_L=\frac{g_J\mu_B}{\hbar}B
+\end{align}
+
+wobei $\omega_L$ die Lamorfrequenz bezeichnet, $g_j$ den Landéfaktor (sihe \ref{LF})und $\mu_B$ das Bohr'sche Magneton.
+
+\gra[0.5]{Hanle_SK1}{Präzisionsbewegung eines Oszillators \label{SK}}
+
+In y-Richtung steigt die Intensität bis zu einem gewissen Sättigungswert an. Es ergibt sich für diese also bei zum Zeitpunkt der Absorption zur Beobachtungsrichtung paralleler Dipolachse, d.h. $\theta(t)=\omega_L t$ und $\theta(t=0)=0$
+
+\begin{align}
+I=C\int_{0}^{\infty}e^{-\frac{t}{\tau}}\sin^2(\theta(t)) dt=C\int_{0}^{\infty}e^{-\frac{t}{\tau}}\sin^2(\omega_L t)=\frac{C\tau}{2}\cdot\frac{(2\omega_L\tau)^2}{1+(2\omega_L\tau)^2} \label{LK}
+\end{align}
+
+Gleichung \ref{LK} entspricht einer invertierten Lorentzkurve, diese Polaristationsrichtung wird in diesem Versuch als 90°-Einstellung bezeichnet.\\
+Senkrechte Polarisation zur Beobachtungsrichtung, in diesem Versuch mit 0°-Einstellung bezeichnet, bedeutet $\theta(t)=\omega_L t + \frac{\pi}{2}$, $\theta(t=0)=\frac{\pi}{2}$ und wir erhalten somit für die Intensität:
+\begin{align}
+I=C\int_{0}^{\infty}e^{-\frac{t}{\tau}}\sin^2(\omega_L t)=\frac{C\tau}{2}\cdot\left( 2-\frac{(2\omega_L\tau)^2}{1+(2\omega_L\tau)^2}\right) \label{LK0}
+\end{align}
+ 
+Gleichung \ref{LK0} entspricht einer normalen Lorentzkurve.\\
+Die mittlere Lebensdauer berechnet sich aus der Halbwertsbreite (FWHM) der Lorentzkurve $B_{FW}$ (siehe Abbildung \ref{LK2}). Es gilt:
+\begin{align}
+\tau=\frac{\hbar}{g_J\mu_B B_{FW}} \label{LK1}
+\end{align}
+
+\gra[0.7]{FWHM}{Darstellung einer Lorentzkurve \label{LK2}}
+
+Die Ableitung der Lorentzverteilung hat die Form einer Dispersionskurve (siehe Abbildung \ref{45}) und ist durch folgenden Zusammenhang gegeben:
+
+\begin{align}
+\frac{d}{d(2\omega_L \tau)}I = C'\left( \frac{(2\omega_L \tau)^2}{(1+(2\omega_L \tau)^2)^2}\right) 
+\end{align}
+
+\gra[0.5]{Einhorn45}{Lorentzkurve (blau) und Dispersionskurve
+	(schwarz) \label{45}}
+
+Diese Dispersionskurve kann bei einer Polarisationsfiltereinstellung von 45° gemessen werden.
+
+
+\subsection{Quantenmechanische Erklärung des Hanle-Effekts}
+
+Bei den Elektronen der Atomorbitale kommt es zur Entartung von Energieniveuas unterschiedlicher Quantenzahlen $m_j$. Durch Anlegen eines äußeren Magnetfeldes (Zeeman-Effekt, siehe Abbildung \ref{QM} links) oder Berücksichtigung der Feinstrukturaufspaltung (ursache hierfür ist die Spin-Bahn-Wechselwirkung) kann diese Entartung aufgehoben werden. Bei passendem Magnetfeld kann es aber gerade zum sogenannten level-crossing kommen, bei dem es zu einer Überkreuzung bzw. einer Entartung von Energieniveaus verschiedener Zustände kommt wie in Abbildung \ref{QM} rechts zu sehen. Ein Spezialfall des level-crossings ist der Hanle-Effekt, der bei einem Magnetfeld mit $B=0$ stattfindet.
+Eben diese entarteten Zustände sind energetisch ununterscheidbar und können kohärent angeregt werden, sodass es bei Abregung zur Interferenz kommt. Dieses Phänomen wird als Resonanzfluoreszenz bezeichnet.   
+
+\graTwo[0.4]{Hanle_QM}{Hanle_QM1}{ Aufspaltung der verschiedenen $m_J$ eines Zustandes im Magnetfeld (Zeeman-Effekt), rechts: level-crossing bei angelegtem Magnetfeld \cite{staat} \label{QM}}
+%
+In diesem Versuch wird der $^3\mathrm{P}_1$ Zustand von Quecksilber betrachtet, der eine dreifache Entartung aufweist:
+\[J=1\Longrightarrow\ m_J=\pm1,0 \]
+Beim Anlegen eines äußeren Magnetfeldes ändert sich die Energie der einzelnen Zustände abhängig von der Projektion des Drehimpulses der Elektronen auf den Vektor des Magnetfeldes. Für $m_J=\pm1$ steigt die Energie linear, bzw. fällt linear ab während sie für $m_J=0$ gleich bleibt.
+Die Wahrscheinlichkeit, dass ein Elektron des Zustandes $\ket{m}$ bei Anregung mit Photonen in einen höheren Zustand $\bra{\mu}$ übergeht, ist durch das Betragsquadrat des Übergangsmatrixelementes gegeben, welches wie folgt definiert ist:
+
+\begin{align}
+f_{\mu m}=\bra{\mu}\hat{r}\cdot\hat{f}\ket{m}\hspace{1cm}
+\end{align}
+
+wobei $\hat{r}$ der Ortsvektor des Elektrons ist und $\hat{f}$ der Polarisationsoperator der Photonen.
+
+Die Gesamtwellenfunktionen ist durch eine Superposition verschiedener Übergangswellenfunktionen gegeben. Mit Hilfe der Breit-Formel erhält man wieder Das Ergebnis des semiklassischen Ansatzes (siehe \cite{anleitung}).
+ 
+\subsection{Landéfaktor \label{LF}}          
+
+Der Gesamtdrehimpulses $\vec{J}$ eines Elektrons setzt sich aus dem Bahndrehimpuls $\vec{L}$ und dem Spin Spin $\vec{S}$ zusammen. Auf Grund dieser Tatsache muss das allgemein gebräuchliche Bohrsche Magneton $\mu_B=(e\hbar)/(2m)$, das ein Proportionalitätsfaktor des magnetischen Moments $\vec{\mu}=(\mu_B\vec{L})/\hbar$ zum Drehimpuls darstellt, mit dem sogenannten Landéfaktor erweitert werden, der wie folgt gegeben ist:
+\begin{align}
+g_J=\frac{J(J+1)-L(L+1)+S(S+1)}{2J(J+1)}
+\end{align}
+
+In diesem Versuch ist diese Formel jedoch nicht uneingeschränkt anwendbar, da wir hier eine Mischung zwischen LS-Kopplung und jj-Kopplung vorliegen haben. Für den hier zu untersuchenden Zustand Zustand ${}^3P_1$ wurde experimentell ein Wert von  $g_J=1.4838$ bestimmt.
+
+
+
+
+
+\subsection{Coherence Narrowing und Dampfdruck \label{Coherence}}
+
+Coherence Narrowing beschreibt im Allgemeinen den Effekt, dass durch Absorption und Reemission eines Photons die Laufzeit im Medium verlängert wird und dadurch der gemessene Peak schmäler wird, die Lebenszeit länger.
+
+Durch Abregen eines Atoms wird ein Photon emittiert welches ein weiteres Atom anregen kann. Dieser Zustand zerfällt dann unter Aussendung eines phasengleichen Photons der gleichen Wellenlänge und gleicher Richtung und Polarisation des ursprünglichen Photons (daher "Coherence"), ist also vom ursprünglichen Photon praktisch nicht zu unterscheiden. Dieser Prozess kann sich bei hinreichender Dichte und Streuquerschnitt wiederholen.
+
+Um diesen Effekt berücksichtigen und herausrechnen zu können, messen wir bei verschiedenen Dichten. Da dies keine direkt messbare Größe ist, wird stattdessen die Temperatur und der Druck variiert. Zwischen Dichte und Temperatur besteht dabei ein exponentieller Zusammenhang und zwischen Dichte und Druck ein linearer Zusammenhang. Der Druck lässt sich aus der direkt gemessenen Temperatur wie folgt berechnen:
+\begin{align}
+ln\left( \frac{p}{p_c}\right) =\frac{T_c}{T}(a_1T_r + a_2T_r^{1.89} + a_3T^{2} + a_4T_r^{8} + a_5T_r^{8.5} + a_6T_r^{9})\hspace{1cm}\mbox{mit } T_r=1-\frac{T}{T_c} \label{Tp}
+\end{align}
+
+Die Parameter sind dabei:
+\[T_c=1764K\hspace{1cm} p_c=167MPa\]
+\begin{align*}
+a_1&=-4.57618368\hspace{1cm} a_2=-1.40726277\hspace{1cm} a_3=2.36263541\\
+a_4&=31.0889985\hspace{1.3cm} a_5=58.0183959\hspace{1.4cm} a_6=-27.6304546
+\end{align*}
+
+
+
+
 
 \newpage
-\section{Versuchsaufbau und -Durchführung}
+\section{Versuchsaufbau}
+
+\graTwo[0.49]{Versuchsaufbau}{Hanle-VA}{Versuchsaufbau 1) QL 2) und 5) Linsen 3) IF 4) PF 6) HS 7) QZ 8) PM 9) TM 10) PE + HP \label{Versuchsaufbau}}
+
+In Abbildung \ref{Versuchsaufbau} ist der Versuchsaufbau dieses Versuches dargestellt. Mit einer Quecksilberdampflampe QL wird Strahlung im UV-Bereich erzeugt. In diesem Versuch wird Strahlung der Wellenlänge 235.7 nm benötigt, dies entspricht dem Übergang vom $^3P_1$ Zustand zum $^1S_0$ Grundzustand. Die beiden Linsen L sorgen für die nötige Fokussierung des Strahls, ihr Abstand entspricht jeweils den Brennweiten. Der Interferenzfalter IF selektiert die gewünschte Wellenlänge während der doppelbrechende Polarisationsfilter PF die Wahl der Polarisationsrichtung ermöglicht. Kernstück des Versuches ist die Quecksilberresonanzzelle QZ, die aus einem Quarzkolben mit einer Vertiefung für das flüssige Qeucksilber besteht. Die Quecksilberresonanzzelle wird von drei Paaren von Helmholtzspulen HS umschlossen, von denen zwei äußere Magnetfelder senkrecht zur Strahlrichtung kompensieren sollen, während das dritte Paar das für den Hanle-Effekt verantwortliche Magnetfeld erzeugt. Die Kühlung erfolgt mit vier Peltierelementen PE, die über Heat-Pipes HP mit dem Versuchsaufbau verbunden sind (siehe \ref{Kühlung}). Das Fluoreszenzsignal wird schließlich über ein Aluminiumrohr an einen Photomultiplier PM geleitet, der das Signal in ein elektrisches umwandelt, das mit einem Oszilloskop aufgenommen wird.
+
+\newpage
+\subsection{Peltier-Element/Kühlung \label{Kühlung}}
+Die Kühlung in diesem Experiment besteht aus vier Peltierelementen. Ein Peltierelement besteht aus zwei verschiedenen Halbleitern bei denen sich die charakteristische Größe der Austrittsarbeit aus dem Leitungsband voneinander unterscheidet. Kommen diese Halbleiter nun in Kontakt und wird zudem eine Spannung angeschlossen, verlieren oder gewinnen Elektronen beim Durchlaufen des Sytems an Energie abhängig davon, in welcher Richtung sie die Potentialbarriere überschreiten. Dementsprechend wird an einem Ende des Peltierelements Kühlung erreicht, während sich die andere Seite erhitzt, denn Temperatur steht in direkter Beziehung zu kinetischer Energie. Das sich erwärmende Ende wird mit Wasser aus der Hausversorgung zusätzlich gekühlt.
+Die hier erklärte Funktionsweise ist schematisch in Abbildung \ref{PE} dargestellt.
+
+\gra[0.8]{Peltierelement}{Funktionsweise eines Peltierelements \label{PE}}
+
+Im Versuch findet der Wärmetransport zwischen dem Peltierelement, das sich zur Vermeidung von Sörfeldern außerhalb der Helmholtzspulen befindet, und der Quecksilberzelle über sogenannte Heat Pipes statt. Heat Pipes sind Rohre, die Freon als Kühlmittel enthalten, am unteren Ende des Rohres findet also Verdampfung statt und am oberen Ende des Rohres Kondensation, sodass der Wärmetransport gewährleistet ist. Einem isolierten Kupferblock, der die Quecksilberzelle umschließt, wird so die Wärme erzogen. Als Wärmeflüssigkeit, die den Kontakt herstellt wird Öl verwendet.
+
+
+\newpage
+\subsection{Photomultiplier}
+
+Ein Photomultiplier ist ein Lichtsensor, der aus einer speziellen Elektronenröhre besteht und dient zur Detektierung von sehr schwachen Lichtsignalen, die in ein elektrisches Signal umgewandelt werden.
+\gra[0.85]{PhotomultiSkizze}{Funktionsweise eines Photomultipliers\label{PM} \cite{PM}}
+Wie in Abbildung \ref{PM} zu erkennen ist, ist an der Seite des Photomultipliers eine Photolathode angebracht. Aus dieser werden einzelne Elektronen durch das Auftreffen von Photonen herausgelöst, die dann durch Anlegen einer Spannung zu weiteren Elektroden hin (sogenannte Dynoden) beschleunigt werden. An diesen werden durch Auftreffen der Photoelektronen weitere Elektronen herausgeläst, sodass es nach und nach zu einer lawinenartigen Verstärkung des Signals kommt. Am Ende dieses Vorgangs treffen die Elektronen auf eine Anode und ein elektrisches Signal wird erzeugt.
+
+\newpage
+\section{Druchführung}
 
 
 \newpage
@@ -338,6 +483,8 @@ Wolf-Dieter Hasenclever,
 Albert-Ludwigs-Universität Freiburg,
 1970
 
+\bibitem{PM}
+\emph{https://www-zeuthen.desy.de/exps/physik\_begreifen/chris/Photomultiplier.html}, Stand 04.10.16
 \end{thebibliography}
 
 \end{document}
