@@ -120,6 +120,7 @@ Der Hanle-Effekt ist ein Interferenzphänomen, das durch Wechselwirkung von Magn
 
 
 
+
 \newpage
 \section{Theoretische Grundlagen}
 
@@ -174,7 +175,7 @@ Die mittlere Lebensdauer berechnet sich aus der Halbwertsbreite (FWHM) der Loren
 Die Ableitung der Lorentzverteilung hat die Form einer Dispersionskurve (siehe Abbildung \ref{45}) und ist durch folgenden Zusammenhang gegeben:
 
 \begin{align}
-\frac{d}{d(2\omega_L \tau)}I = C'\left( \frac{(2\omega_L \tau)^2}{(1+(2\omega_L \tau)^2)^2}\right) 
+\frac{d}{d(2\omega_L \tau)}I = C'\left( \frac{(2\omega_L \tau)^2}{(1+(2\omega_L \tau)^2)^2}\right) \label{45a}
 \end{align}
 
 \gra[0.5]{Einhorn45}{Lorentzkurve (blau) und Dispersionskurve
@@ -269,7 +270,7 @@ Wie in Abbildung \ref{PM} zu erkennen ist, ist an der Seite des Photomultipliers
 \newpage
 \section{Auswertung}
 \subsection{Zeit-Magnetfeld-Kalibration}
-Wir haben die Intensitätsverläufe in Abhängigkeit der Zeit aufgenommen. Um diese in die magnetische Flussdichte $\vec B$ umrechnen zu können, benutzen wir die ebenfalls aufgenommenen Werte der Spannung an der Helmholtzspule, welche das Magnetfeld in z-Richtung $B_z$ erzeugt. Um daraus das Magnetfeld zu berechnen nutzen wir folgende Umrechnungsfaktoren\textsuperscript{\cite{anleitung}}:
+Wir haben am Oszilloskop die Intensitätsverläufe in Abhängigkeit der Zeit aufgenommen. Um diese in die magnetische Flussdichte $\vec B$ umrechnen zu können, benutzen wir die ebenfalls aufgenommenen Werte der Spannung an der Helmholtzspule, welche das Magnetfeld in z-Richtung $B_z$ erzeugt, das varriert wird. Um daraus das Magnetfeld zu berechnen nutzen wir folgende Umrechnungsfaktoren\textsuperscript{\cite{anleitung}}:
 \begin{align*}
 	I&=U\\
 	B_z&=3.363\cdot10^{-4}\cdot I
@@ -284,33 +285,40 @@ Im weiteren Verlauf der Auswertung werden die Datensätze nicht über die Zeit, 
 \end{align*}
 \newpage
 \subsection{Lorentzfits}
-Nach !!!REF!!! verhalten sich die Daten für die Polarisationen $Pol=0°$ und $Pol=90°$ entsprechend einer Lorentz-Funktion. Wir fitten an die Daten nun also folgende Funktion:
+Nach den Gleichungen \ref{LK} und \ref{LK0} verhalten sich die Daten für die Polarisationen $Pol=0°$ und $Pol=90°$ entsprechend einer Lorentz-Funktion. Wir fitten an die Daten nun also folgende Funktion:
 \begin{align}
 	I(\omega_L)&=D+\frac C2\left(2-\frac{(2(\omega_L-\omega)\tau)^2}{1+(2(\omega_L-\omega)\tau)^2}\right)
 \end{align}
 Abbildung \ref{lorentzbeispiel} zeigt einen beispielhaften Lorentzfit. Der Fitparameter $\tau$ ist hierbei die Lebensdauer des Quecksilber-Zustands.
 
 \gra[1]{warm0-5}{Beispielhafter Lorentz-Fit\label{lorentzbeispiel}}
+
+Die Daten sämtlicher Lorentzfits sind in Tabellenform im Anhang gesammelt (siehe \ref{LF}).
 \newpage
 \subsection{Dispersionsfit}
-Für die Polarisation $Pol=45°$ ist der erwartete Verlauf eine Dispersionskurve (siehe !!!REF!!!). An diese Daten fitten wir also folgende Funktion:
+Für die Polarisation $Pol=45°$ ist der erwartete Verlauf eine Dispersionskurve (siehe Gleichung \ref{45a} und Abbildung \ref{45}). An diese Daten fitten wir also folgende Funktion:
 \begin{align}
 	I(\omega_L)&=D+\frac C2\left(2-\frac{(2(\omega_L-\omega)\tau)}{(1+(2(\omega_L-\omega)\tau)^2)^2}\right)
 \end{align}
 Abbildung \ref{dispbeispiel} zeigt einen beispielhaften Dispersionsfit. Auch hierbei ist der Fitparameter $\tau$ die Lebenszeit.
 
 \gra[1]{warm45-8}{Beispielhafter Dispersionsfit\label{dispbeispiel}}
+
+Die Daten sämtlicher Dispersionsfits sind in Tabellenform im Anhang gesammelt (siehe \ref{DD}).
 \newpage
-\subsection{Dampfdruck-Extrapolation}
-Wie in Kapitel \ref{Coherence} besprochen, hängen die gemessenen Lebensdauern vom Dampfdruck ab. Um aus den gemessenen Lebensdauern die tatsächliche Lebensdauer zu bestimmen, tragen wir diese über den Dampfdruck auf und extrapolieren aus dem daraus erwarteten linearen Zusammenhang die Lebensdauer für $p=0$. Den Dampfdruck $p$ erhalten wir aus der Temperatur durch die empirische Formel (\ref{Tp})\textsuperscript{\cite{anleitung}}:
+\subsection{Dampfdruck-Extrapolation \label{DE}}
+Wie in Kapitel \ref{Coherence} besprochen, hängen die gemessenen Lebensdauern vom Dampfdruck ab. Um aus den gemessenen Lebensdauern die tatsächliche Lebensdauer zu bestimmen, tragen wir diese über den Dampfdruck auf und extrapolieren aus dem daraus erwarteten linearen Zusammenhang die Lebensdauer für $p=0$. Den Dampfdruck $p$ erhalten wir aus der Temperatur durch die empirische Formel (siehe Gleichung\ref{Tp})\textsuperscript{\cite{anleitung}}:
 \begin{align}
 	p&=p_c\cdot\exp\left(\frac{T_c}{T}\left(a_1T_r+a_2Tr^{1.89}+a_3T_r^2+a_4T_r^8+a_5T_r^8.5+a_6T_r^9\right)\right) &\text{mit }T_r=1-\frac{T}{T_c}\label{druckformel}
 \end{align}
-Aus den gemessenen Temperaturen berechnen wir mit Gleichung (\ref{druckformel}) den Dampfdruck. Wir tragen die gemessenen Lebensdauern über den Druck auf und bestimmen dann aus einer linearen Regression die tatsächliche Lebensdauer $\tau(p=0)$. Diese entspricht dem y-Achsenabschnitt des linearen Fits, da dieser den Wert $\tau(p=0)$ darstellt.
+Aus den gemessenen Temperaturen berechnen wir mit Gleichung (\ref{druckformel}) den Dampfdruck. Wir tragen die gemessenen Lebensdauern über den Druck auf und bestimmen dann aus einer linearen Regression die tatsächliche Lebensdauer $\tau(p=0)$. Diese entspricht dem y-Achsenabschnitt des linearen Fits $\tau_{mess}=ap+b$, da dieser den Wert $\tau(p=0)$ darstellt.
 \newpage
 \subsubsection{Polarisationen $Pol=0°$ und $Pol=90°$}
+
+Im Folgenden sind die Auswertungen für die Polarisationsrichtungen 0° und 90° zusammen dargestellt, da wir hier jeweils Lorentzfits durchführen während wir für die Messungen mit einer Polarisationsrichtung von 45° Dispersionsfits durchführen.
+
 \paragraph{Aufwärmvorgang}\ \\
-\graTwo{zeitdruck-warm0}{zeitdruck-warm90}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-w}}
+\graTwo{zeitdruck-warm0}{zeitdruck-warm90}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-w} (siehe \ref{LD})}
 Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Paramete (siehe Abbildung \ref{zeitdruck-w}):
 \begin{table}[h!]
 	\centering
@@ -331,8 +339,8 @@ Da die Werte für $Pol=0°$ und $Pol=90°$ bis auf ca. 2 Standardabweichungen ü
 	\tau_{\text{Mittel}}&=(125.4\pm1.3)\,\mathrm{ns}
 \end{align*}
 \paragraph{Abkühlvorgang}\ \\
-\graTwo{zeitdruck-cold0}{zeitdruck-cold90}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-c}}
-Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ erhalten wir folgende Parameter (siehe Abbildung \ref{zeitdruck-c}):
+\graTwo{zeitdruck-cold0}{zeitdruck-cold90}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-c}(siehe \ref{LD})}
+Für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ (siehe \ref{DE}) erhalten wir folgende Parameter (siehe Abbildung \ref{zeitdruck-c}):
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{c|c|c||r}
@@ -352,7 +360,7 @@ Da die Werte für $Pol=0°$ und $Pol=90°$ wieder bis auf ca. 2 Standardabweichu
 	\tau_{\text{Mittel}}&=(118.5\pm1.8)\,\mathrm{ns}
 \end{align*}
 \paragraph{Mittelung}\ \\\ \\\label{Mittelung}
-Die Werte für die Aufwärm- und Abkühlvorgang sind innerhalb von 3 Standardabweichungen miteinander vereinbar.  Deshalb berechnen wir ein gewichtetes Mittel der beiden Werte. Da wir uns bei dem einem Vorgang von oben, bei dem anderen von unten angenähert haben, werden etwaige systematische Fehler wie z.B. eine verzögerte Temperaturanzeige am Thermometer durch die Mittelung minimiert.\\
+Die Werte für die Aufwärm- und Abkühlvorgang sind innerhalb von 3 Standardabweichungen miteinander vereinbar.  Wir berechnen ein gewichtetes Mittel der beiden Werte, da wir uns bei dem einem Vorgang von oben, bei dem anderen von unten angenähert haben, etwaige systematische Fehler wie z.B. eine verzögerte Temperaturanzeige am Thermometer durch die Mittelung so minimieren.\\
 Als Ergebnis für die Lebensdauer erhalten wir nun:
 \begin{align*}
 	\tau&=123.0\pm1.1
@@ -360,7 +368,7 @@ Als Ergebnis für die Lebensdauer erhalten wir nun:
 \newpage
 \subsubsection{Polarisation $Pol=45°$}
 \paragraph{Aufwärmvorgang}\ \\
-\gra[1]{zeitdruck-warm45}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-w45}}
+\gra[1]{zeitdruck-warm45}{Die gemessenen Lebensdauern des Aufwärmvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-w45}(siehe \ref{DD})}
 Hier erhalten wir für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ folgende Parameter (siehe Abbildung \ref{zeitdruck-w45}):
 \begin{align*}
 	a&=(-28\pm11)\,\mathrm{\frac{ns}{Pa}}\\
@@ -372,7 +380,7 @@ Das Ergebnis für die Lebensdauer beträgt nun:
 	\tau&=(42.0\pm0.9)\,\mathrm{ns}
 \end{align*}
 \paragraph{Abkühlvorgang}\ \\
-\gra[1]{zeitdruck-cold45}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-c45}}
+\gra[1]{zeitdruck-cold45}{Die gemessenen Lebensdauern des Abkühlvorgangs in Abhängigkeit des Dampfdrucks\label{zeitdruck-c45} (siehe \ref{DD})}
 Beim Abkühlvorgang erhalten wir folgende Parameter für den linearen Fit der Lebenszeit über den Druck $\tau_{mess}=ap+b$ (siehe Abbildung \ref{zeitdruck-c45}):
 \begin{align*}
 	a&=(70\pm20)\,\mathrm{\frac{ns}{Pa}}\\
@@ -389,7 +397,7 @@ Die Werte für die Aufwärm- und Abkühlvorgang für $Pol=45°$ sind innerhalb v
 Für die Lebensdauer erhalten wir nun folgendes Ergebnis:
 $$\tau_{45°}=40.3\pm0.8$$
 \subsubsection{Vergleich}
-Für die Polarisationen $Pol=0°$ und $Pol=90°$ erhalten wir übereinstimmende Ergebnisse. Die Ergebnisse von $Pol=45°$ passen jedoch nicht zu den anderen Ergebnissen. Deswegen wird kein Mittelwert aus den Ergebnissen gebildet. Mehr dazu folgt in Kapitel \ref{diskussion}.
+Für die Polarisationen $Pol=0°$(Aufwärmevorgang:$\tau_{0°}=(123.0\pm1.7)\,\mathrm{ns}$ Abkühlvorgang:$tau_{0°}=(115.0\pm2)\,\mathrm{ns}$) und $Pol=90°$(Aufwärmevorgang:$\tau_{90°}=(129\pm2)\,\mathrm{ns}$ Abkühlvorgang: $\tau_{90°}=(125\pm3)\,\mathrm{ns}$) erhalten wir übereinstimmende Ergebnisse. Die Ergebnisse von $Pol=45°$ passen jedoch nicht zu den anderen Ergebnissen. Deswegen wird kein Mittelwert aus den Ergebnissen gebildet. Mehr dazu folgt in Kapitel \ref{diskussion}.
 \newpage
 
 \subsection{Intensitätsverlauf}
@@ -426,14 +434,20 @@ Die Parameter der Fitdaten sind in Tabelle \ref{fitdaten} zu finden.
 
 
 \subsection{Tabellen}
+
+\subsubsection{Lorentz-Fit-Daten\label{LD}}
 In den folgenden Tabellen \ref{cold0} - \ref{warm90} sind die Daten der Lorentz-Fits zu finden:
 \input{tables/cold0.tex}
-\input{tables/cold45.tex}
+
 \input{tables/cold90.tex}
 \input{tables/warm0.tex}
-\input{tables/warm45.tex}
+
 \input{tables/warm90.tex}
 
+\subsubsection{Dispersionsfit-Daten\label{DD}}
+In den folgenden Tabellen \ref{cold45} - \ref{warm45} sind die Daten der Lorentz-Fits zu finden:
+\input{tables/cold45.tex}
+\input{tables/warm45.tex}
 %\subsubsection{$\alpha$-Plateau Samarium}
 %\lstinputlisting[language=MATLAB]{Rohdaten/alphaPlateau_Sm.txt}
 
@@ -485,6 +499,9 @@ Albert-Ludwigs-Universität Freiburg,
 
 \bibitem{PM}
 \emph{https://www-zeuthen.desy.de/exps/physik\_begreifen/chris/Photomultiplier.html}, Stand 04.10.16
+
+\bibitem{HAMAMAMUTSU}
+\emph{https://www.hamamatsu.com/resources/pdf/etd/PMT\_handbook\_v3aE-Chapter13.pdf}
 \end{thebibliography}
 
 \end{document}
