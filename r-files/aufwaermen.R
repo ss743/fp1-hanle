@@ -28,6 +28,10 @@ tau0=c()
 tau45=c()
 tau90=c()
 
+chi0=c()
+chi45=c()
+chi90=c()
+
 intense0=c()
 intense45=c()
 intense90=c()
@@ -90,9 +94,10 @@ for(i in 1:N0){
   plotlorentz(fit,c(-6,6)*10^7)
   title(paste("Aufwärmvorgang - Nr. ",i," - T=",T0[i],"K; Pol=0°",sep=""))
   dev.off()
+  chi0[i]=fit[5,1]
   tau0[i]=abs(fit["tau","Estimate"])
   stau0[i]=fit["tau","Std. Error"]
-  intense0[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
+  intense0[i]=fit["D","Estimate"]
   table0=paste(table0,makeline(fit,T0[i]),sep="\n")
 }
 table0=paste(table0,endtable("Aufwärmvorgang, Polarisation: 0°",label="warm0"),sep="\n")
@@ -125,9 +130,10 @@ for(i in 1:N90){
   plotlorentz(fit,c(-6,6)*10^7)
   title(paste("Aufwärmvorgang - Nr. ",i," - T=",T90[i],"K; Pol=90°",sep=""))
   dev.off()
+  chi90[i]=fit[5,1]
   tau90[i]=abs(fit["tau","Estimate"])
   stau90[i]=fit["tau","Std. Error"]
-  intense90[i]=abs(getlorentzvalue(fit,fit["omega","Estimate"])-fit["D","Estimate"])
+  intense90[i]=fit["D","Estimate"]
   table90=paste(table90,makeline(fit,T0[i]),sep="\n")
 }
 table90=paste(table90,endtable("Aufwärmvorgang, Polarisation: 90°",label="warm90"),sep="\n")
@@ -160,9 +166,10 @@ for(i in 1:N45){
   title(paste("Aufwärmvorgang - Nr. ",i," - T=",T45[i],"K; Pol=45°",sep=""))
   dev.off()
   #text(4*10^7,(par("yaxp")[2]-par("yaxp")[1])*3/4+par("yaxp")[1],getdispformula(fit),cex=0.8)
+  chi45[i]=fit[5,1]
   tau45[i]=abs(fit["tau","Estimate"])
   stau45[i]=fit["tau","Std. Error"]
-  intense45[i]=1/2*abs(optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=TRUE)$objective-optimize(function(x){getdispvalue(fit,x)},c(-2,2)*10^7,maximum=FALSE)$objective)
+  intense45[i]=fit["D","Estimate"]
   table45=paste(table45,makeline(fit,T0[i]),sep="\n")
 }
 table45=paste(table45,endtable("Aufwärmvorgang, Polarisation: 45°",label="warm45"),sep="\n")
@@ -171,6 +178,10 @@ cat(table45,file="../tables/warm45.tex")
 fit0=linearfit(data.frame(x=P0,y=tau0,sy=stau0),weighted=TRUE)
 fit45=linearfit(data.frame(x=P45,y=tau45,sy=stau45),weighted=TRUE)
 fit90=linearfit(data.frame(x=P90,y=tau90,sy=stau90),weighted=TRUE)
+
+cat(paste("\nW_tau, 0°: Chi_quadrat=",fit0[5]*10^9,sep=""))
+cat(paste("\nW_tau, 45°: Chi_quadrat=",fit45[5]*10^9,sep=""))
+cat(paste("\nW_tau, 90°: Chi_quadrat=",fit90[5]*10^9,sep=""))
 
 plotCI(P0,tau0,uiw=stau0,cex=0.6,pch=4,bty="l",xlab="p / Pa", ylab="Tau / s")
 plotlinear(fit0,c(0,300))
@@ -185,23 +196,46 @@ plotlinear(fit45,c(0,300))
 grid()
 title("Polarisation 45°")
 
-fitInt0=linearfit(data.frame(x=T0,y=intense0),weighted=FALSE)
-fitInt45=linearfit(data.frame(x=T45,y=intense45),weighted=FALSE)
-fitInt90=linearfit(data.frame(x=T90,y=intense90),weighted=FALSE)
+plotlindata(fit0,"W, 0°")
+plotlindata(fit45,"W, 45°")
+plotlindata(fit90,"W, 90°")
 
-plot(T0,intense0,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Amplitude / V")
+si0 =abs(intense0 *0.03)
+si45=abs(intense45*0.03)
+si90=abs(intense90*0.03)
+
+sT0 =0.5
+sT45=0.5
+sT90=0.5
+
+fitInt0=linearfit(data.frame(x=T0,y=intense0,sy=si0),weighted=TRUE)
+fitInt45=linearfit(data.frame(x=T45,y=intense45,sy=si45),weighted=TRUE)
+fitInt90=linearfit(data.frame(x=T90,y=intense90,sy=si90),weighted=TRUE)
+
+cat(paste("\nW_i, 0°: Chi_quadrat=",fitInt0[5],sep=""))
+cat(paste("\nW_i, 45°: Chi_quadrat=",fitInt45[5],sep=""))
+cat(paste("\nW_i, 90°: Chi_quadrat=",fitInt90[5],sep=""))
+
+plotCI(T0,intense0,uiw=si0,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Grundintensität / V")
+plotCI(T0,intense0,uiw=sT0,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fitInt0,c(0,300))
 grid()
 title("Polarisation 0°")
-plot(T90,intense90,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Amplitude / V")
+plotCI(T90,intense90,uiw=si90,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Grundintensität / V")
+plotCI(T90,intense90,uiw=sT90,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fitInt90,c(0,300))
 grid()
 title("Polarisation 90°")
-plot(T45,intense45,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Amplitude / V")
+plotCI(T45,intense45,uiw=si45,cex=0.6,pch=4,bty="l",xlab="T / K", ylab="Grundintensität / V")
+plotCI(T45,intense45,uiw=sT45,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fitInt45,c(0,300))
 grid()
 title("Polarisation 45°")
 
+cat("\n")
+plotlindata(fitInt0,"Warm - Polarisation 0°")
+plotlindata(fitInt45,"Warm - Polarisation 45°")
+plotlindata(fitInt90,"Warm - Polarisation 90°")
 
 tau_ext=c()
 stau_ext=c()
@@ -217,5 +251,14 @@ tau_end=weighted.mean(tau_ext,1/stau_ext^2)*10^9
 stau_end=sqrt(1/sum(1/stau_ext^2))*10^9
 
 results=roundfunc(c(tau_end,stau_end))
+results45=roundfunc(c(tau_ext45,stau_ext45))*10^9
+results90=roundfunc(c(tau_ext[2],stau_ext[2]))*10^9
+results0=roundfunc(c(tau_ext[1],stau_ext[1]))*10^9
 
-cat(paste("Tau1 = (",results[1]," +- ",results[2],") ns\n",sep=""))
+cat(paste("Tau1_0  = (",results0[1]," +- ",results0[2],") ns\n",sep=""))
+cat(paste("Tau1_90 = (",results90[1]," +- ",results90[2],") ns\n",sep=""))
+cat(paste("Tau1    = (",results[1]," +- ",results[2],") ns\n",sep=""))
+cat(paste("Tau1_45 = (",results45[1]," +- ",results45[2],") ns\n",sep=""))
+
+tau1_45=results45[1]
+stau1_45=results45[2]
