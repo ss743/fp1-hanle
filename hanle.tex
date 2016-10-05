@@ -392,28 +392,31 @@ $$\tau_{45°}=40.3\pm0.8$$
 Für die Polarisationen $Pol=0°$ und $Pol=90°$ erhalten wir übereinstimmende Ergebnisse. Die Ergebnisse von $Pol=45°$ passen jedoch nicht zu den anderen Ergebnissen. Deswegen wird kein Mittelwert aus den Ergebnissen gebildet. Mehr dazu folgt in Kapitel \ref{diskussion}.
 \newpage
 
-\subsection{Intensitätsverlauf}
-\graThree{intense-warm0}{intense-warm45}{intense-warm90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Aufwärmvorgangs\label{intense-warm}}
-\graThree{intense-cold0}{intense-cold45}{intense-cold90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Abkühlvorgangs\label{intense-cold}}
-In den Abbildungen \ref{intense-warm} und \ref{intense-cold} sind die Amplituden der Lorentz-Fits über die Zeit aufgetragen. Man erkennt einen linear abnehmenden Verlauf, an welchen eine Gerade gefittet wurde ($I(T)=a\cdot T+b$).\\
+\subsection{Grundintensitäten}
+Um die Temperaturmessungen zu überprüfen, wurden in den Abbildungen \ref{intense-warm} und \ref{intense-cold} Grundintensitäten der Lorentz- und Dispersions-Fits über die Zeit aufgetragen (Daten im Anhang in Kapitel \ref{tabellen}). Da man hier durch die Temperaturabhängigkeit des Photomultipliers einen linearen Verlauf erwartet, kann man aus Abweichungen von diesem Verlauf auf Fehler bei den Temperaturmessungen schließen.
 
-Die Parameter der Fitdaten sind in Tabelle \ref{fitdaten} zu finden.
+\graThree[0.6]{intense-warm0}{intense-warm45}{intense-warm90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Aufwärmvorgangs\label{intense-warm}}
+\graThree[0.6]{intense-cold0}{intense-cold45}{intense-cold90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Abkühlvorgangs\label{intense-cold}}
+\newpage
+An diese Daten fitten wir nun eine Gerade $I(T)=a\cdot T+b$. Die Parameter der Fitdaten sind in Tabelle \ref{fitdaten} zu finden.
 
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{c||c|c||r}
 		$Pol$	&	$a\,/\,\mathrm{\frac{V}{K}}$	&	$b\,/\,\mathrm{V}$	& $\chi^2$/ndf	\\\hline\hline
 		\textbf{Aufwärmen}	&	&	&	\\\hline
-		0°	&	$-34.8\pm0.9$	&	$11100\pm300$	&	0.19	\\\hline
-		45°	&	$-9.0\pm0.3$	&	$2830\pm80$		&	0.10	\\\hline
-		90° &	$-33.2\pm0.5$	&	$10280\pm160$	&	0.09	\\\hline\hline
+		0°	&	$18.8\pm1.9$	&	$-5900\pm500$	&	1.79	\\\hline
+		45°	&	$-0.3\pm0.5$	&	$70\pm150$		&	176	\\\hline
+		90° &	$-16.6\pm1.1$	&	$5200\pm300$	&	0.69	\\\hline\hline
 		\textbf{Abkühlen}	&	&	&	\\\hline
-		0°	&	$-12.6\pm0.4$	&	$3810\pm110$	&	0.48	\\\hline
-		45°	&	$-2.72\pm0.09$	&	$820\pm30$		&	0.12	\\\hline
-		90° &	$-9.2\pm0.3$	&	$2730\pm80$ 	&	0.43		
+		0°	&	$6.5\pm0.7$		&	$-1910\pm190$	&	3.6	\\\hline
+		45°	&	$-0.8\pm0.4$	&	$260\pm100$		&	33	\\\hline
+		90° &	$-3.6\pm0.8$	&	$1100\pm200$ 	&	3.8		
 	\end{tabular}
 	\caption{Fitdaten der Intensitätsverläufe aus den Abbildungen \ref{intense-warm} und \ref{intense-cold}\label{fitdaten}}
 \end{table}
+
+Für die Polarisationseinstellungen $Pol=0°$ und $Pol=90°$ sind die Fits akzeptabel, allerdings lassen sich Abweichungen erkennen. Für den Aufwärmvorgang sind die Fits besser als für den Abkühlvorgang. Außerdem fällt auf, dass die Werte für die Polarisation $Pol=45°$ nicht zum linearen Verlauf passen.
 
 \clearpage
 \section{Zusammenfassung und Diskussion}
@@ -425,7 +428,7 @@ Die Parameter der Fitdaten sind in Tabelle \ref{fitdaten} zu finden.
 %\subsection{Grafiken}
 
 
-\subsection{Tabellen}
+\subsection{Tabellen}\label{tabellen}
 In den folgenden Tabellen \ref{cold0} - \ref{warm90} sind die Daten der Lorentz-Fits zu finden:
 \input{tables/cold0.tex}
 \input{tables/cold45.tex}
