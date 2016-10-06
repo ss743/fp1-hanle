@@ -264,7 +264,7 @@ Ein Photomultiplier ist ein Lichtsensor, der aus einer speziellen Elektronenröh
 Wie in Abbildung \ref{PM} zu erkennen ist, ist an der Seite des Photomultipliers eine Photolathode angebracht. Aus dieser werden einzelne Elektronen durch das Auftreffen von Photonen herausgelöst, die dann durch Anlegen einer Spannung zu weiteren Elektroden hin (sogenannte Dynoden) beschleunigt werden. An diesen werden durch Auftreffen der Photoelektronen weitere Elektronen herausgeläst, sodass es nach und nach zu einer lawinenartigen Verstärkung des Signals kommt. Am Ende dieses Vorgangs treffen die Elektronen auf eine Anode und ein elektrisches Signal wird erzeugt.
 
 \newpage
-\section{Durchführung}
+\section{Durchführung}\label{durchfuehrung}
 Zu Beginn des Versuchs kalibrieren wir die Helmholtzspulen, um äußere Magnetfeldeinflüsse auszugleichen. Dazu stellen wir wie in \cite{anleitung} die Stromstärken der Helmholtzspule so ein, dass die maximale Amplitude der Lorentzkurve erreicht wird.\\
 
 Anschließend kühlen wir die Messanordnung auf eine Temperatur von $T=-19°$C ab. Dann schalten wir die Kühlvorrichtung ab, um bei steigender Temperatur die Intensitätsverläufe aufzunehmen. Dazu legen wir ein linear ansteigendes Magnetfeld an, um die Lorentz- und Dispersionskurven des Hanle-Effekts aufzunehmen.\\
@@ -410,7 +410,7 @@ $$\tau_{45°}=(40.3\pm0.8)\,\mathrm{ns}$$
 Für die Polarisationen $Pol=0°$ (Aufwärmevorgang:$\tau_{0°}=(123.0\pm1.7)\,\mathrm{ns}$, Abkühlvorgang:$\tau_{0°}=(115.0\pm2)\,\mathrm{ns}$) und $Pol=90°$ (Aufwärmevorgang:$\tau_{90°}=(129\pm2)\,\mathrm{ns}$, Abkühlvorgang: $\tau_{90°}=(125\pm3)\,\mathrm{ns}$) erhalten wir übereinstimmende Ergebnisse. Die Ergebnisse von $Pol=45°$ passen jedoch nicht zu den anderen Ergebnissen. Deswegen wird kein Mittelwert aus den Ergebnissen gebildet. Mehr dazu folgt in Kapitel \ref{diskussion}.
 \newpage
 
-\subsection{Grundintensitäten}
+\subsection{Grundintensitäten}\label{grundintense}
 Um die Temperaturmessungen zu überprüfen, wurden in den Abbildungen \ref{intense-warm} und \ref{intense-cold} Grundintensitäten der Lorentz- und Dispersions-Fits über die Zeit aufgetragen (Daten im Anhang in Kapitel \ref{tabellen}). Da man hier durch die Temperaturabhängigkeit des Photomultipliers einen linearen Verlauf erwartet, kann man aus Abweichungen von diesem Verlauf auf Fehler bei den Temperaturmessungen schließen.
 
 \graThree[0.6]{intense-warm0}{intense-warm45}{intense-warm90}{Zeitlicher Verlauf der Intensitätsamplituden der drei verschiedenen Polarisationen des Aufwärmvorgangs\label{intense-warm}}
@@ -436,10 +436,10 @@ An diese Daten fitten wir nun eine Gerade $I(T)=a\cdot T+b$. Die Parameter der F
 
 Für die Polarisationseinstellungen $Pol=0°$ und $Pol=90°$ sind die Fits akzeptabel, allerdings lassen sich Abweichungen erkennen. Für den Aufwärmvorgang sind die Fits besser als für den Abkühlvorgang. Außerdem fällt auf, dass die Werte für die Polarisation $Pol=45°$ nicht zum linearen Verlauf passen.
 
-\clearpage
+\newpage
 \section{Zusammenfassung und Diskussion}
 \label{diskussion}
-
+\vskip -10 pt
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{c|c|c}
@@ -462,14 +462,25 @@ Wie in Abschnitt \ref{christianistvollkacke} beschrieben, haben wir folgende Mit
 \tau_{45°} &= (40.3 \pm 0.8) \,\mathrm{ns}    &&\text{(aus 0° und 90°) }
 \end{align*}
 
-Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als für den Abkühlvorgang. 
+Der Literaturwert für die Lebenszeit beträgt\textsuperscript{\cite{anleitung}}:
+\begin{align*}
+	\tau_{Lit}&=119\,\mathrm{ns}
+\end{align*}
 
+Wie man in Tabelle \ref{fastfertig} sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als für den Abkühlvorgang. Außerdem erhalten wir generell höhere Werte für die 90°-Messungen als für die 0°-Messungen. Die Werte der 45°-Messungen sind sehr viel niedriger als sowohl die 0°- als auch die 90°-Messungen.\\
 
-\newpage
+Die Differenz zwischen den Polarisationsrichtungen $Pol=0°$ und $Pol=90°$ lässt sich durch die Reihenfolge der Messungen begründen. Wie in \ref{durchfuehrung} beschrieben, haben wir für jeden Grad-Schritt versucht, jede Polarisationsrichtung aufzunehmen. Beim Aufwärmvorgang haben wir bei jedem Grad-Schritt mit der Polarisation $Pol=0°$ angefangen und mit der Polarisation $Pol=90°$ aufgehört. Beim Abkühlvorgang haben wir nach dem gleichen Verfahren angefangen zu messen. Da wir für den zweiten Grad-Schritt $T=17°$ jedoch nicht schnell genug messen konnten, konnten wir für diese Messung keinen $Pol=90°$-Messpunkt aufnehmen. Also verschob sich unsere Messreihenfolge und ab diesem Grad-Schritt maßen wir bei jedem Grad-Schritt zuerst $Pol=90°$, anschließend $Pol=0°$ und zum Schluss $Pol=45°$. Dies führt dazu, dass unsere $Pol=90°$-Werte immer bei höheren Temperaturen als die $Pol=0°$-Werte gemessen wurden, während der nominelle Wert des Thermometers gleichbleibt. Da eine höhere Temperatur eine höhere gemessene Lebenszeit induziert, erklärt dies die Abweichungen zwischen den $Pol=0°$- und $Pol=90°$-Messungen. Deshalb ist es sinnvoll, von beiden Polarisationsrichtungen den Mittelwert zu bilden.\\
+
+In \ref{grundintense} haben wir die Verläufe der Grundintensitäten in Abhängigkeit der Temperatur aufgetragen und mit dem erwarteten linearen Verlauf verglichen. Hierbei fiel auf, dass die Werte für $Pol=45°$ keinem erkennbaren linearen Verlauf folgen. Dies erklärt die sehr weit von den anderen Werten entfernt liegenden Ergebnisse für $Pol=45°$, weswegen wir diese Werte verwerfen.\\
+
+Da die Temperatur in der Quecksilberresonanzzelle bei einer anliegenden Temperaturänderung vermutlich nicht räumlich konstant ist und die Anzeige auf dem Thermometer vermutlich verzögert zur tatsächlichen Temperaturänderung ist, entspricht die gemessene Temperatur nicht exakt der tatsächlichen Temperatur. Da wir einmal bei steigender und einmal bei sinkender Temperatur messen, bewirkt der Effekt der Verzögerung einmal einen zu hohen und einmal einen zu tiefen Wert. Durch Mittelung der beiden Werte kann der Einfluss dieses Effekts verkleinert werden. Da die Temperaturänderung trotzdem nicht dem gemessenen Verlauf entspricht, bewirkt dies einen weiteren systematischen Fehler, welcher Einfluss auf unsere Endergebnisse hat.\\
+
+Unser Ergebnis für die Lebenszeit aus dem Abkühlvorgang stimmt innerhalb des Fehlers mit dem Literaturwert überein. Das Mittel aus Aufwärm- und Abkühlvorgang jedoch stimmt nicht mit dem Literaturwert überein, sondern liegt fast 4 Standardabweichungen daneben. Dies lässt uns vermuten, dass der systematische Fehler eine längere Messung der Lebenszeit bewirkt und/oder die Messung der Abkühlung mit besseren Temperaturmessungen durchgeführt wurde.
 \section{Anhang}
 
 \subsection{Grafiken}\label{bilder}
 \subsubsection{Aufwärmvorgang 0°}
+
 \begin{minipage}[h!]{\textwidth}
 	\centering
 	\includegraphics[width=0.49\textwidth]{figures/warm0-1.png}\hskip 10 pt
@@ -481,7 +492,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 	\includegraphics[width=0.49\textwidth]{figures/warm0-7.png}\hskip 10 pt
 	\includegraphics[width=0.49\textwidth]{figures/warm0-8.png}\vskip -10pt
 	\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	{\centering
 
@@ -491,7 +502,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 	\includegraphics[width=0.49\textwidth]{figures/warm0-12.png}\vskip -10pt	\includegraphics[width=0.49\textwidth]{figures/warm0-13.png}\hskip 10 pt
 	\includegraphics[width=0.49\textwidth]{figures/warm0-14.png}\vskip -10pt}	\includegraphics[width=0.49\textwidth]{figures/warm0-15.png}\hskip 10 pt
 	\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 
 \subsubsection{Aufwärmvorgang 45°}
 \begin{minipage}[h!]{\textwidth}
@@ -505,7 +516,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 	\includegraphics[width=0.49\textwidth]{figures/warm45-7.png}\hskip 10 pt
 	\includegraphics[width=0.49\textwidth]{figures/warm45-8.png}\vskip -10pt
 	\captionof{figure}{Dispersionsfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	{\centering
 		
@@ -515,7 +526,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 		\includegraphics[width=0.49\textwidth]{figures/warm45-12.png}\vskip -10pt	\includegraphics[width=0.49\textwidth]{figures/warm45-13.png}\hskip 10 pt
 		\includegraphics[width=0.49\textwidth]{figures/warm45-14.png}\vskip -10pt}	\includegraphics[width=0.49\textwidth]{figures/warm45-15.png}\hskip 10 pt
 	\captionof{figure}{Dispersionsfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 
 \subsubsection{Aufwärmvorgang 90°}
 \begin{minipage}[h!]{\textwidth}
@@ -529,7 +540,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 	\includegraphics[width=0.49\textwidth]{figures/warm90-7.png}\hskip 10 pt
 	\includegraphics[width=0.49\textwidth]{figures/warm90-8.png}\vskip -10pt
 	\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	{\centering
 		
@@ -539,7 +550,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 		\includegraphics[width=0.49\textwidth]{figures/warm90-12.png}\vskip -10pt	\includegraphics[width=0.49\textwidth]{figures/warm90-13.png}\hskip 10 pt
 		\includegraphics[width=0.49\textwidth]{figures/warm90-14.png}\vskip -10pt}
 	\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 
 \subsubsection{Abkühlvorgang 0°}
 \begin{minipage}[h!]{\textwidth}
@@ -552,7 +563,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 	\includegraphics[width=0.49\textwidth]{figures/cold0-6.png}\vskip -10pt
 
 	\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	\centering
 	\includegraphics[width=0.49\textwidth]{figures/cold0-7.png}\hskip 10 pt
@@ -562,7 +573,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 		\includegraphics[width=0.49\textwidth]{figures/cold0-11.png}\hskip 10 pt
 		\includegraphics[width=0.49\textwidth]{figures/cold0-12.png}\vskip -10pt	
 	\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	\centering
 		\includegraphics[width=0.49\textwidth]{figures/cold0-13.png}\hskip 10 pt
@@ -570,7 +581,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 		\includegraphics[width=0.49\textwidth]{figures/cold0-16.png}\vskip -10pt
 		\includegraphics[width=0.49\textwidth]{figures/cold0-17.png}\hskip 10 pt	\includegraphics[width=0.49\textwidth]{figures/cold0-18.png}\vskip -10pt
 		\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-	\end{minipage}\newpage
+	\end{minipage}
 
 
 \subsubsection{Abkühlvorgang 45°}
@@ -583,7 +594,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 	\includegraphics[width=0.49\textwidth]{figures/cold45-5.png}\hskip 10 pt
 	\includegraphics[width=0.49\textwidth]{figures/cold45-6.png}\vskip -10pt
 	\captionof{figure}{Dispersionsfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	\centering
 		
@@ -594,7 +605,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 		\includegraphics[width=0.49\textwidth]{figures/cold45-11.png}\hskip 10 pt
 		\includegraphics[width=0.49\textwidth]{figures/cold45-12.png}\vskip -10pt
 	\captionof{figure}{Dispersionsfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	{\centering
 		\includegraphics[width=0.49\textwidth]{figures/cold45-13.png}\hskip 10 pt
@@ -602,7 +613,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 		\includegraphics[width=0.49\textwidth]{figures/cold45-16.png}\vskip -10pt	\includegraphics[width=0.49\textwidth]{figures/cold45-17.png}\hskip 10 pt
 		\includegraphics[width=0.49\textwidth]{figures/cold45-18.png}\vskip -10pt}
 	\captionof{figure}{Dispersionsfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 
 
 \subsubsection{Abkühlvorgang 90°}
@@ -615,7 +626,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 	\includegraphics[width=0.49\textwidth]{figures/cold90-5.png}\hskip 10 pt
 	\includegraphics[width=0.49\textwidth]{figures/cold90-6.png}\vskip -10pt
 	\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	\centering
 		
@@ -626,7 +637,7 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 		\includegraphics[width=0.49\textwidth]{figures/cold90-11.png}\hskip 10 pt
 		\includegraphics[width=0.49\textwidth]{figures/cold90-12.png}\vskip -10pt
 	\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-\end{minipage}\newpage
+\end{minipage}
 \begin{minipage}[h!]{\textwidth}
 	\centering
 		\includegraphics[width=0.49\textwidth]{figures/cold90-13.png}\hskip 10 pt
@@ -634,7 +645,8 @@ Wie man sieht, erhalten wir generell für den Aufwärmvorgang höhere Werte als 
 		\includegraphics[width=0.49\textwidth]{figures/cold90-16.png}\vskip -10pt
 		\includegraphics[width=0.49\textwidth]{figures/cold90-17.png}\hskip 10 pt	\includegraphics[width=0.49\textwidth]{figures/cold90-18.png}\vskip -10pt
 		\captionof{figure}{Lorentzfits an die Intensitätsverläufe}
-	\end{minipage}\newpage
+	\end{minipage}
+	\clearpage
 
 \subsection{Tabellen}\label{tabellen}
 
@@ -680,12 +692,31 @@ In den folgenden Tabellen \ref{cold45} - \ref{warm45} sind die Daten der Lorentz
 \subsubsection{\code{textables.R}}\label{textablesR}
 \lstinputlisting[language=R]{r-files/textables.R}
 
-\subsection{Laborheft}
-%\begin{minipage}{\textwidth}
-%\centering
-%\includegraphics[width=0.9\textwidth]{figures/IMG_20151002_141014.jpg}
-%\end{minipage}
-
+\subsection{Laborheft}\label{laborbuch}
+\begin{minipage}{\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{laborbuch/laborbuch1.pdf}
+\end{minipage}
+\begin{minipage}{\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{laborbuch/laborbuch2.pdf}
+\end{minipage}
+\begin{minipage}{\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{laborbuch/laborbuch3.pdf}
+\end{minipage}
+\begin{minipage}{\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{laborbuch/laborbuch4.pdf}
+\end{minipage}
+\begin{minipage}{\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{laborbuch/laborbuch5.pdf}
+\end{minipage}
+\begin{minipage}{\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{laborbuch/laborbuch6.pdf}
+\end{minipage}
 \newpage
 \listoffigures
 
