@@ -38,8 +38,16 @@ sdruck <- function(p,T,sT){
   
   Tr=(1-T/Tc)
   
-  dpdT=-1/Tc*p/(1-Tr)*sum((a*Tr^x)*(-1/(1-Tr)+x/Tr))
-  dpda=p/(1-Tr)*Tr^x
+  Tsum1=(a[1]*Tr^x[1])*(-1/(1-Tr)+x[1]/Tr)
+  Tsum2=(a[2]*Tr^x[2])*(-1/(1-Tr)+x[2]/Tr)
+  Tsum3=(a[3]*Tr^x[3])*(-1/(1-Tr)+x[3]/Tr)
+  Tsum4=(a[4]*Tr^x[4])*(-1/(1-Tr)+x[4]/Tr)
+  Tsum5=(a[5]*Tr^x[5])*(-1/(1-Tr)+x[5]/Tr)
+  Tsum6=(a[6]*Tr^x[6])*(-1/(1-Tr)+x[6]/Tr)
+  
+  
+  dpdT=-1/Tc*p/(1-Tr)*(Tsum1+Tsum2+Tsum3+Tsum4+Tsum5+Tsum6)
+  #dpda=p/(1-Tr)*Tr^x
   dpda1=p/(1-Tr[1])*Tr[1]^x[1]#dpda[1]*dpda*sig[1,]
   dpda2=p/(1-Tr[2])*Tr[2]^x[2]#dpda[2]*dpda*sig[2,]
   dpda3=p/(1-Tr[3])*Tr[3]^x[3]#dpda[3]*dpda*sig[3,]

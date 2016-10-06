@@ -22,6 +22,14 @@ P0=druck(T0)
 P45=druck(T45)
 P90=druck(T90)
 
+sT0 =0.5
+sT45=0.5
+sT90=0.5
+
+sP0=sdruck(P0,T0,sT0)
+sP45=sdruck(P45,T45,sT45)
+sP90=sdruck(P90,T90,sT90)
+
 tau0=c()
 tau45=c()
 tau90=c()
@@ -184,14 +192,17 @@ cat(paste("\nK_tau, 45°: Chi_quadrat=",fit45[5]*10^9,sep=""))
 cat(paste("\nK_tau, 90°: Chi_quadrat=",fit90[5]*10^9,sep=""))
 
 plotCI(P0,tau0,uiw=stau0,cex=0.6,pch=4,bty="l",xlab="p / Pa", ylab="Tau / s")
+plotCI(P0,tau0,uiw=sP0,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fit0,c(0,300))
 grid()
 title("Polarisation 0°")
 plotCI(P90,tau90,uiw=stau90,cex=0.6,pch=4,bty="l",xlab="p / Pa", ylab="Tau / s")
+plotCI(P90,tau90,uiw=sP90,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fit90,c(0,300))
 grid()
 title("Polarisation 90°")
 plotCI(P45,tau45,uiw=stau45,cex=0.6,pch=4,bty="l",xlab="p / Pa", ylab="Tau / s")
+plotCI(P45,tau45,uiw=sP45,err="x",cex=0.6,pch=4,add=TRUE)
 plotlinear(fit45,c(0,300))
 grid()
 title("Polarisation 45°")
